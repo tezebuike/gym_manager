@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :subscriptions
   resources :customers
   resources :plans
   root 'sessions#new'

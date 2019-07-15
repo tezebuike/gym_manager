@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190715001632) do
+ActiveRecord::Schema.define(version: 20190715003240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
+    t.string "slug"
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "email"
+    t.string "phone_number"
+    t.string "address"
+    t.string "gender"
+    t.date "date_of_birth"
+    t.date "date_joined"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_customers_on_slug"
+  end
 
   create_table "plans", force: :cascade do |t|
     t.string "name"
@@ -21,6 +37,23 @@ ActiveRecord::Schema.define(version: 20190715001632) do
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "receipt_number"
+    t.string "mode_of_payment"
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "amount_paid"
+    t.decimal "balance"
+    t.decimal "discount"
+    t.string "status"
+    t.bigint "customer_id"
+    t.bigint "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
+    t.index ["plan_id"], name: "index_subscriptions_on_plan_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +68,6 @@ ActiveRecord::Schema.define(version: 20190715001632) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "subscriptions", "customers"
+  add_foreign_key "subscriptions", "plans"
 end

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Receipt number:</strong>
+  <%= @subscription.receipt_number %>
+</p>
+
+<p>
+  <strong>Mode of payment:</strong>
+  <%= @subscription.mode_of_payment %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @subscription.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @subscription.end_date %>
+</p>
+
+<p>
+  <strong>Amount paid:</strong>
+  <%= @subscription.amount_paid %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @subscription.balance %>
+</p>
+
+<p>
+  <strong>Discount:</strong>
+  <%= @subscription.discount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @subscription.status %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @subscription.customer %>
+</p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @subscription.plan %>
+</p>
+
+<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+<%= link_to 'Back', subscriptions_path %>

@@ -5,7 +5,7 @@ class CreateCustomers < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :middle_name
       t.string :email
-      t.sting :phone_number
+      t.string :phone_number
       t.string :address
       t.string :gender
       t.date :date_of_birth
@@ -14,5 +14,6 @@ class CreateCustomers < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :customers, :slug
   end
 end
