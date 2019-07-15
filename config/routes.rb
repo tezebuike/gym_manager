@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :plans
   root 'sessions#new'
 
   get    '/signin',   to: 'sessions#new'
