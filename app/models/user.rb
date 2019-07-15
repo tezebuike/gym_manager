@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :username,  presence: true, length: { maximum: 25 },
                     uniqueness: { case_sensitive: false }, allow_blank: false
 
+  has_many :attendances
+  
   # Returns a token for remembering users.
   def User.new_token
     SecureRandom.urlsafe_base64
