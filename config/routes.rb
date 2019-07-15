@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :attendances
   resources :subscriptions
   resources :customers
   resources :plans
