@@ -16,3 +16,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require sb-admin-2.min
+//= require jquery-easing/jquery.easing.min.js
+
