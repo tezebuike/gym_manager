@@ -19,3 +19,10 @@
 //= require sb-admin-2.min
 //= require jquery-easing/jquery.easing.min.js
 
+$(document).ready(function() {
+  setTimeout(function() {
+    $('#flash-messages').fadeOut('slow', function() {
+      $(this).remove();
+    })
+  }, 2000)
+})
