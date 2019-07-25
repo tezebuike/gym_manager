@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20190715081823) do
     t.string "slug"
     t.string "first_name"
     t.string "middle_name"
+    t.string "last_name"
     t.string "email"
     t.string "phone_number"
     t.string "address"
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(version: 20190715081823) do
 
   create_table "plans", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "plan_type"
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

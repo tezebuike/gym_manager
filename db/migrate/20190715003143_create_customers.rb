@@ -4,6 +4,7 @@ class CreateCustomers < ActiveRecord::Migration[5.1]
       t.string :slug
       t.string :first_name
       t.string :middle_name
+      t.string :last_name
       t.string :email
       t.string :phone_number
       t.string :address

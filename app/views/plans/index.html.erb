@@ -16,7 +16,7 @@
     <% @plans.each do |plan| %>
       <tr>
         <td><%= plan.name %></td>
-        <td><%= plan.type %></td>
+        <td><%= plan.plan_type %></td>
         <td><%= plan.duration %></td>
         <td><%= link_to 'Show', plan %></td>
         <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
