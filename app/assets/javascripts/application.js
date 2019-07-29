@@ -16,7 +16,9 @@
 //= require popper
 //= require bootstrap
 //= require jquery-easing/jquery.easing.min.js
-//= require sb-admin-2.min
+//= require admin.min.js
+//= require datatables/jquery.dataTables.min.js
+//= require datatables/dataTables.bootstrap4.min.js
 //= require_tree .
 
 $(document).ready(function() {
@@ -26,5 +28,5 @@ $(document).ready(function() {
     })
   }, 2000);
 
-  $("#datatable").dataTable();
+  $("#dataTable").dataTable();
 });
