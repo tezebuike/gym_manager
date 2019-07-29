@@ -12,17 +12,19 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require sb-admin-2.min
 //= require jquery-easing/jquery.easing.min.js
+//= require sb-admin-2.min
+//= require_tree .
 
 $(document).ready(function() {
   setTimeout(function() {
     $('#flash-messages').fadeOut('slow', function() {
       $(this).remove();
     })
-  }, 2000)
-})
+  }, 2000);
+
+  $("#datatable").dataTable();
+});
