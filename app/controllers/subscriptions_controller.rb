@@ -41,7 +41,7 @@ class SubscriptionsController < ApplicationController
   # PATCH/PUT /subscriptions/1.json
   def update
     respond_to do |format|
-      if @subscription.update(subscription_params)
+      if @subscription.update(subscription_params) if current_user.admin?
         format.html { redirect_to @subscription, notice: 'Subscription was successfully updated.' }
         format.json { render :show, status: :ok, location: @subscription }
       else
@@ -54,9 +54,9 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1
   # DELETE /subscriptions/1.json
   def destroy
-    @subscription.destroy
+    @subscription.update_attribute({status: "deleted"}) if current_user.admin?
     respond_to do |format|
-      format.html { redirect_to subscriptions_url, notice: 'Subscription was successfully destroyed.' }
+      format.html { redirect_to subscriptions_url, notice: 'Subscription was successfully deleted.' }
       format.json { head :no_content }
     end
   end

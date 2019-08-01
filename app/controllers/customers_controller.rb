@@ -54,9 +54,9 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    @customer.destroy
+    @customer.update_attribute(deleted: true) if user.admin?
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.html { redirect_to customers_url, notice: 'Customer was successfully deleted.' }
       format.json { head :no_content }
     end
   end
