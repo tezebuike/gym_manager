@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-1 bg-gradient-primary "></div>
       <div class="col-lg-10">
-        <div class="p-5">
+        <div class="p-3">
           <%= form_with(model: customer, local: true, class:"user") do |form| %>
             <% if customer.errors.any? %>
               <div id="error_explanation">
@@ -20,61 +20,72 @@
 
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.label :slug, "Surefit ID", class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :slug, id: :customer_slug, class:"form-control form-control-user", placeholder:"Surefit ID" %>
               </div>
 
               <div class="col-sm-6">
+                <%= form.label :first_name, class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :first_name, id: :customer_first_name, class:"form-control form-control-user", placeholder:"First Name" %>
               </div>
             </div>
             
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.label :middle_name, class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :middle_name, id: :customer_middle_name, class:"form-control form-control-user", placeholder:"Middle Name" %>
               </div>
 
               <div class="col-sm-6">
+                <%= form.label :last_name, class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :last_name, id: :customer_last_name, class:"form-control form-control-user", placeholder:"Last Name" %>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.label :email, class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :email, id: :customer_email, class:"form-control form-control-user", placeholder:"Email Address" %>
               </div>
 
               <div class="col-sm-6">
+                <%= form.label :phone_number, class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :phone_number, id: :customer_phone_number, class:"form-control form-control-user", placeholder:"Phone Number" %>
               </div>
             </div>
 
             <div class="form-group">
+              <%= form.label :address , class:"mb-0 ml-3 text-gray-800" %>
               <%= form.text_field :address, id: :customer_address, class:"form-control form-control-user", placeholder:"Address" %>
             </div>
 
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.label :gender, class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :gender, id: :customer_gender, class:"form-control form-control-user", placeholder:"Gender" %>
               </div>
 
               <div class="col-sm-6">
+                <%= form.label :status, class:"mb-0 ml-3 text-gray-800" %>
                 <%= form.text_field :status, id: :customer_status, class:"form-control form-control-user", placeholder:"Status" %>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                <%= form.date_select :date_of_birth, id: :customer_date_of_birth, class:"form-control form-control-user", placeholder:"Date of Birth" %>
+                <%= form.label :date_of_birth, 'Birthday', class:"mb-0 ml-3 text-gray-800" %>
+                <%= form.date_field :date_of_birth, id: :customer_date_of_birth, class:"form-control form-control-user", placeholder:"Date of Birth" %>
               </div>
 
               <div class="col-sm-6">
-                <%= form.date_select :date_joined, id: :customer_date_joined, class:"form-control form-control-user", placeholder:"Date Joined" %>
+                <%= form.label :date_joined, class:"mb-0 ml-3 text-gray-800" %>
+                <%= form.date_field :date_joined, id: :customer_date_joined, class:"form-control form-control-user", placeholder:"Date Joined" %>
               </div>
             </div>
 
             <hr>
             <div>
-              <%= form.submit class:"btn btn-primary btn-user btn-block" %>
+              <%= form.submit class:"mb-4 btn btn-primary btn-user btn-block" %>
             </div>
           <% end %>
         </div>
