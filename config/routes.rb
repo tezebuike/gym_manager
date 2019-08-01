@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   
   get 'home/index'
 
-  resources :attendances
+  resources :attendances do
+    collection do
+      get :take
+    end
+  end
   resources :subscriptions
   resources :customers
   resources :plans
