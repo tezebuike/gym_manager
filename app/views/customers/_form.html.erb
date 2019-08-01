@@ -1,72 +1,85 @@
-<%= form_with(model: customer, local: true) do |form| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+<div class="card o-hidden border-0 shadow-lg my-3">
+  <div class="card-body p-0">
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+      <div class="col-lg-1 bg-gradient-primary "></div>
+      <div class="col-lg-10">
+        <div class="p-5">
+          <%= form_with(model: customer, local: true, class:"user") do |form| %>
+            <% if customer.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
-      <ul>
-      <% customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                <ul>
+                <% customer.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.text_field :slug, id: :customer_slug, class:"form-control form-control-user", placeholder:"Surefit ID" %>
+              </div>
+
+              <div class="col-sm-6">
+                <%= form.text_field :first_name, id: :customer_first_name, class:"form-control form-control-user", placeholder:"First Name" %>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.text_field :middle_name, id: :customer_middle_name, class:"form-control form-control-user", placeholder:"Middle Name" %>
+              </div>
+
+              <div class="col-sm-6">
+                <%= form.text_field :last_name, id: :customer_last_name, class:"form-control form-control-user", placeholder:"Last Name" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.text_field :email, id: :customer_email, class:"form-control form-control-user", placeholder:"Email Address" %>
+              </div>
+
+              <div class="col-sm-6">
+                <%= form.text_field :phone_number, id: :customer_phone_number, class:"form-control form-control-user", placeholder:"Phone Number" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= form.text_field :address, id: :customer_address, class:"form-control form-control-user", placeholder:"Address" %>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.text_field :gender, id: :customer_gender, class:"form-control form-control-user", placeholder:"Gender" %>
+              </div>
+
+              <div class="col-sm-6">
+                <%= form.text_field :status, id: :customer_status, class:"form-control form-control-user", placeholder:"Status" %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <%= form.date_select :date_of_birth, id: :customer_date_of_birth, class:"form-control form-control-user", placeholder:"Date of Birth" %>
+              </div>
+
+              <div class="col-sm-6">
+                <%= form.date_select :date_joined, id: :customer_date_joined, class:"form-control form-control-user", placeholder:"Date Joined" %>
+              </div>
+            </div>
+
+            <hr>
+            <div>
+              <%= form.submit class:"btn btn-primary btn-user btn-block" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-1 bg-gradient-primary "></div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :slug %>
-    <%= form.text_field :slug, id: :customer_slug %>
   </div>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :customer_first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :middle_name %>
-    <%= form.text_field :middle_name, id: :customer_middle_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :customer_last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :customer_email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number, id: :customer_phone_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :customer_address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :gender %>
-    <%= form.text_field :gender, id: :customer_gender %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date_of_birth %>
-    <%= form.date_select :date_of_birth, id: :customer_date_of_birth %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date_joined %>
-    <%= form.date_select :date_joined, id: :customer_date_joined %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :customer_status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

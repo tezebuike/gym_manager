@@ -1,5 +1,6 @@
-<h1>New Customer</h1>
+<div class="d-sm-flex align-items-center justify-content-between">
+  <h1 class="h3 mb-0 text-gray-800">New Customer</h1>
+  <a href="<%= customers_path %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Back </a>
+</div>
 
 <%= render 'form', customer: @customer %>
-
-<%= link_to 'Back', customers_path %>
