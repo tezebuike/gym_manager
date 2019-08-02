@@ -1,13 +1,13 @@
 
+<% if @user.avatar? %>
+  <div class="image-wrapper">
+    <%= image_tag(@user.avatar, alt: @user.full_name) %>
+  </div>
+<% end %>
 
 <p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
+  <strong>Full name:</strong>
+  <%= @user.full_name %>
 </p>
 
 <p>
