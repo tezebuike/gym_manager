@@ -47,8 +47,9 @@
     <%= form.text_field :password_confirmation, id: :user_password_confirmation %>
   </div>
   <div class="col-4 mb-2 custom-file">
+    <% holder = user.avatar.present? ? user.avatar.file.try(&:filename) : "Upload Photo" %>
     <%= form.file_field :avatar, id: :user_avatar, class: "custom-file-input" %>
-    <%= form.label :avatar, 'Choose file', class:"custom-file-label" %>
+    <%= form.label :avatar, holder, class:"custom-file-label" %>
   </div>
 
   <div class="actions">

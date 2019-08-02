@@ -21,7 +21,7 @@
 //= require datatables/dataTables.bootstrap4.min.js
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   setTimeout(function() {
     $('#flash-messages').fadeOut('slow', function() {
       $(this).remove();

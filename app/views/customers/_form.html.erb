@@ -85,8 +85,9 @@
 
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0 custom-file">
+                <% holder = customer.avatar.present? ? customer.avatar.file.try(&:filename) : "Upload Photo" %>
                 <%= form.file_field :avatar, id: :customer_avatar, class: "custom-file-input" %>
-                <%= form.label :avatar, 'Upload Picture', class:"mb-0 ml-3 text-gray-800 custom-file-label" %>
+                <%= form.label :avatar, holder, class:"mb-0 ml-3 text-gray-800 custom-file-label" %>
               </div>
             </div>
 
