@@ -7,6 +7,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }, allow_blank: false
 
   has_many :attendances
+  mount_uploader :avatar, AvatarUploader
 
   def full_name
     return "#{first_name} #{last_name}"
