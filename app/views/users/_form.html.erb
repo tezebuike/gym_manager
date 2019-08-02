@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <% if user.avatar? %>
+    <div class="image-wrapper">
+      <%= image_tag(user.avatar.thumb) %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= form.label :first_name %>
     <%= form.text_field :first_name, id: :user_first_name %>
@@ -40,7 +46,17 @@
     <%= form.label :password_confirmation %>
     <%= form.text_field :password_confirmation, id: :user_password_confirmation %>
   </div>
+  <div class="col-4 mb-2 custom-file">
+    <%= form.file_field :avatar, id: :user_avatar, class: "custom-file-input" %>
+    <%= form.label :avatar, 'Choose file', class:"custom-file-label" %>
+  </div>
 
+  <% if user.avatar? %>
+    <div class="custom-control custom-checkbox mb-3">
+      <%= form.check_box :remove_avatar, class: 'custom-control-input' %>
+      <%= form.label :remove_avatar, "Remove Picture", class: 'custom-control-label' %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -29,4 +29,6 @@ $(document).ready(function() {
   }, 2000);
 
   $("#dataTable").dataTable();
+
+  bsCustomFileInput.init();
 });
