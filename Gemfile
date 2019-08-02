@@ -32,8 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use Active Storage variant
-gem 'image_processing', '~> 1.2'
+# For Image Storage variant
+gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
