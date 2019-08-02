@@ -14,9 +14,9 @@
       <div class="card-body">
         <div>
           <% if @customer.avatar? %>
-            <div>
-              <%= image_tag(@customer.avatar, class:"img-cust") %>
-            </div>
+            <%= image_tag(@customer.avatar, class:"img-cust") %>
+          <% else %>
+            <%= image_tag("default.png", class:"img-cust") %>
           <% end %>
         </div>
       </div>
