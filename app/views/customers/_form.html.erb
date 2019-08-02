@@ -88,13 +88,6 @@
                 <%= form.file_field :avatar, id: :customer_avatar, class: "custom-file-input" %>
                 <%= form.label :avatar, 'Upload Picture', class:"mb-0 ml-3 text-gray-800 custom-file-label" %>
               </div>
-
-              <% if customer.avatar? %>
-                <div class="col-sm-6 custom-control custom-checkbox mb-3">
-                  <%= form.check_box :remove_avatar, class: 'custom-control-input' %>
-                  <%= form.label :remove_avatar, "Remove Picture", class: 'mb-0 ml-3 text-gray-800 custom-control-label' %>
-                </div>
-              <% end %>
             </div>
 
             <hr>

@@ -51,12 +51,6 @@
     <%= form.label :avatar, 'Choose file', class:"custom-file-label" %>
   </div>
 
-  <% if user.avatar? %>
-    <div class="custom-control custom-checkbox mb-3">
-      <%= form.check_box :remove_avatar, class: 'custom-control-input' %>
-      <%= form.label :remove_avatar, "Remove Picture", class: 'custom-control-label' %>
-    </div>
-  <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>
