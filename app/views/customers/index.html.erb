@@ -107,7 +107,7 @@
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.slug %></td>
-              <td><%= customer.full_name %></td>
+              <td><%= link_to customer.full_name, customer %></td>
               <td><%= customer.gender %></td>
               <td><%= customer.date_joined %></td>
               <td><%= customer.status %></td>

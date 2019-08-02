@@ -41,7 +41,7 @@ class SubscriptionsController < ApplicationController
   # PATCH/PUT /subscriptions/1.json
   def update
     respond_to do |format|
-      if @subscription.update(subscription_params) if current_user.admin?
+      if current_user.admin? && @subscription.update(subscription_params) 
         format.html { redirect_to @subscription, notice: 'Subscription was successfully updated.' }
         format.json { render :show, status: :ok, location: @subscription }
       else

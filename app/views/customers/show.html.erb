@@ -1,59 +1,142 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800"><%= @customer.full_name %></h1>
+  <a href="<%= customers_path %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Back </a>
+</div>
 
+<div class="row">
+  <!-- Pie Chart -->
+  <div class="col-xl-4 col-lg-5">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Picture</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body ">
+        <div class="chart-pie pt-4 pb-2">
+          <canvas></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @customer.slug %>
-</p>
+  <!-- Area Chart -->
+  <div class="col-xl-8 col-lg-7">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Profile Details</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-4 col-md-6 mb-4 text-capitalize">
+            <span class="font-weight-bold text-gray-800">Surefit ID: </span><%= @customer.slug %>
+          </div>
+          <div class="col-xl-4 col-md-6 mb-4 text-capitalize">
+            <span class="font-weight-bold text-gray-800">Status: </span><%= @customer.status %>
+          </div>
+          <div class="col-xl-4 col-md-6 mb-4 text-capitalize">
+            <span class="font-weight-bold text-gray-800">Gender: </span><%= @customer.gender %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6 col-md-6 mb-4">
+            <span class="font-weight-bold text-gray-800">Email Address: </span><%= @customer.email %>
+          </div>
+          <div class="col-xl-6 col-md-6 mb-4">
+            <span class="font-weight-bold text-gray-800">Phone number: </span><%= @customer.phone_number %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6 col-md-6 mb-4">
+            <span class="font-weight-bold text-gray-800">Birthday: </span><%= @customer.date_of_birth %>
+          </div>
+          <div class="col-xl-6 col-md-6 mb-4">
+            <span class="font-weight-bold text-gray-800">Date Joined: </span><%= @customer.date_joined %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-sm-flex justify-content-between mb-2">
+            <div class="text-capitalize">
+              <span class="font-weight-bold text-gray-800">Contact Address: </span><%= @customer.address %>
+            </div>
+            <a href="<%= edit_customer_path(@customer) %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit </a>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @customer.first_name %>
-</p>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Subscriptions</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Plan Name</th>
+            <th>Receipt number</th>
+            <th>Mode of payment</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Amount paid</th>
+            <th>Balance</th>
+            <th>Discount</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-<p>
-  <strong>Middle name:</strong>
-  <%= @customer.middle_name %>
-</p>
+        <tbody>
+          <% @subscriptions.each do |subscription| %>
+            <tr>
+              <td><%= subscription.plan.subscription_name %></td>
+              <td><%= subscription.receipt_number %></td>
+              <td><%= subscription.mode_of_payment %></td>
+              <td><%= subscription.start_date %></td>
+              <td><%= subscription.end_date %></td>
+              <td><%= subscription.amount_paid %></td>
+              <td><%= subscription.balance %></td>
+              <td><%= subscription.discount %></td>
+              <td><%= subscription.status %></td>
+              <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @customer.last_name %>
-</p>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Attendance</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Subscription Period</th>
+            <th>Date Attended</th>
+            <th>Checked-in By</th>
+          </tr>
+        </thead>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @customer.phone_number %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @customer.address %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @customer.gender %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @customer.date_of_birth %>
-</p>
-
-<p>
-  <strong>Date joined:</strong>
-  <%= @customer.date_joined %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @customer.status %>
-</p>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+        <tbody>
+          <% @attendances.each do |attend| %>
+            <tr>
+              <td><%= attend.customer.sub_period %></td>
+              <td><%= attend.date_attended %></td>
+              <td><%= attend.user.full_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

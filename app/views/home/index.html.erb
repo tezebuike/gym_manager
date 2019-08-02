@@ -114,7 +114,7 @@
           <% @current_subscribers.each do |cs| %>
             <tr>
               <td><%= cs.customer.slug %></td>
-              <td><%= cs.customer.full_name %></td>
+              <td><%= link_to cs.customer.full_name, cs.customer %></td>
               <td><%= cs.customer.gender %></td>
               <td><%= cs.plan.subscription_name %></td>
               <td><%= cs.balance  %></td>
