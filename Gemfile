@@ -34,6 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # For Image Storage variant
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
+gem 'file_validators'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

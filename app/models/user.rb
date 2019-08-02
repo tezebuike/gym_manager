@@ -1,13 +1,14 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   has_secure_password
+  mount_uploader :avatar, AvatarUploader
 
+  validates :avatar, file_size: { less_than_or_equal_to: 1.megabytes }
   validates :role, presence: true
   validates :username,  presence: true, length: { maximum: 25 },
                     uniqueness: { case_sensitive: false }, allow_blank: false
 
   has_many :attendances
-  mount_uploader :avatar, AvatarUploader
 
   def full_name
     return "#{first_name} #{last_name}"

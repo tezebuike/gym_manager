@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
   has_many :plans, :through => :subscriptions
   has_many :attendances
   mount_uploader :avatar, AvatarUploader
+  validates :avatar, file_size: { less_than: 2.megabytes }
 
   scope :active, -> {    joins(:subscriptions).merge(Subscription.current_subscribers) }
   scope :birth_month, -> { where('extract(month from date_of_birth) = ?', Date.today.month)  }
