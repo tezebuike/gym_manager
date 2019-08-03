@@ -76,12 +76,12 @@
                 <div class="form-group row">
                   <div class="col-sm-4 mb-3 mb-sm-0">
                     <%= form.label :gender, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.select :gender, options_for_select(Customer.genders.keys.map(&:titleize), customer.gender), {}, class: 'form-control form-control-lg form-control-user' %>
+                    <%= form.select :gender, options_for_select(Customer.genders.keys, customer.gender), {}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
 
                   <div class="col-sm-4">
                     <%= form.label :status, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.select :status, options_for_select(Customer.statuses.keys.map(&:titleize), customer.status), {}, class: 'form-control form-control-lg form-control-user' %>
+                    <%= form.select :status, options_for_select(Customer.statuses.keys, customer.status), {}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
 
                   <div class="col-sm-4 mt-4 custom-file">

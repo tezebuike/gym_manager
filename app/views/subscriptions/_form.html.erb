@@ -68,7 +68,7 @@
 
                   <div class="col-sm-4">
                     <%= form.label :status, class:"mb-2 ml-3 text-gray-800" %>
-                    <%= form.select :status, options_for_select(Subscription.statuses.keys.map(&:titleize), subscription.status), {}, class: 'form-control form-control-lg form-control-user' %>
+                    <%= form.select :status, options_for_select(Subscription.statuses.keys, subscription.status), {}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
                 </div>
                 <hr>
