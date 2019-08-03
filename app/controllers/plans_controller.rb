@@ -7,11 +7,6 @@ class PlansController < ApplicationController
     @plans = Plan.all
   end
 
-  # GET /plans/1
-  # GET /plans/1.json
-  def show
-  end
-
   # GET /plans/new
   def new
     @plan = Plan.new

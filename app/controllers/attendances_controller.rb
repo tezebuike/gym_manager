@@ -7,16 +7,6 @@ class AttendancesController < ApplicationController
     @attendances = Attendance.all
   end
 
-  # GET /attendances/1
-  # GET /attendances/1.json
-  def show
-  end
-
-  # GET /attendances/new
-  def new
-    @attendance = Attendance.new
-  end
-
   # GET /attendances/1/edit
   def edit
   end

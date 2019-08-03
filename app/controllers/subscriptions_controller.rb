@@ -7,11 +7,6 @@ class SubscriptionsController < ApplicationController
     @subscriptions = Subscription.all
   end
 
-  # GET /subscriptions/1
-  # GET /subscriptions/1.json
-  def show
-  end
-
   # GET /subscriptions/new
   def new
     @subscription = Subscription.new
