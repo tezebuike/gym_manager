@@ -1,32 +1,50 @@
-<%= form_with(model: plan, local: true) do |form| %>
-  <% if plan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+<div class="row justify-content-center">
+  <div class="col-xl-10 col-lg-12 col-md-9">
 
-      <ul>
-      <% plan.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-6">
+            <div class="p-5">
+              <%= form_with(model: plan, local: true, class:"user") do |form| %>
+                <% if plan.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+                    <ul>
+                    <% plan.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="form-group">
+                  <%= form.label :name, "Plan Name", class:"mb-0 ml-3 text-gray-800" %>
+                  <%= form.text_field :name, id: :plan_name, class:"form-control form-control-user", placeholder:"Plan Name" %>
+                </div>
+
+                <div class="form-group">
+                  <%= form.label :plan_type, class:"mb-0 ml-3 text-gray-800" %>
+                  <%= form.text_field :plan_type, id: :plan_plan_type, class:"form-control form-control-user", placeholder:"Plan Type" %>
+                </div>
+
+                <div class="form-group">
+                  <%= form.label :duration, class:"mb-0 ml-3 text-gray-800" %>
+                  <%= form.number_field :duration, id: :plan_duration, class:"mb-4 form-control form-control-user", placeholder:"Duration" %>
+                </div>
+                <hr>
+                <div>
+                  <%= form.submit class:"btn btn-primary btn-user btn-block" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :plan_name %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :plan_type %>
-    <%= form.text_field :plan_type, id: :plan_plan_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :duration %>
-    <%= form.number_field :duration, id: :plan_duration %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

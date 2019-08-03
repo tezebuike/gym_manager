@@ -1,67 +1,85 @@
-<%= form_with(model: subscription, local: true) do |form| %>
-  <% if subscription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+<div class="row justify-content-center">
+  <div class="col-xl-10 col-lg-12 col-md-9">
 
-      <ul>
-      <% subscription.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="p-5">
+              <%= form_with(model: subscription, local: true, class:"user") do |form| %>
+                <% if subscription.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+                    <ul>
+                    <% subscription.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :plan_id, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :plan_id, id: :subscription_plan_id, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :receipt_number, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :receipt_number, id: :subscription_receipt_number, class:"form-control form-control-user"%>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :mode_of_payment, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :mode_of_payment, id: :subscription_mode_of_payment, class:"form-control form-control-user"%>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :amount_paid, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :amount_paid, id: :subscription_amount_paid, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :discount, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :discount, id: :subscription_discount, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :balance, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :balance, id: :subscription_balance, class:"form-control form-control-user" %>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :start_date, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.date_field :start_date, id: :subscription_start_date, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :end_date, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.date_field :end_date, id: :subscription_end_date, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :status, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :status, id: :subscription_status, class:"form-control form-control-user" %>
+                  </div>
+                </div>
+                <hr>
+                <div>
+                  <%= form.submit class:"btn btn-primary btn-user btn-block" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :receipt_number %>
-    <%= form.text_field :receipt_number, id: :subscription_receipt_number %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :mode_of_payment %>
-    <%= form.text_field :mode_of_payment, id: :subscription_mode_of_payment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :subscription_start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date, id: :subscription_end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount_paid %>
-    <%= form.text_field :amount_paid, id: :subscription_amount_paid %>
-  </div>
-
-  <div class="field">
-    <%= form.label :balance %>
-    <%= form.text_field :balance, id: :subscription_balance %>
-  </div>
-
-  <div class="field">
-    <%= form.label :discount %>
-    <%= form.text_field :discount, id: :subscription_discount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :subscription_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.text_field :customer_id, id: :subscription_customer_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :plan_id %>
-    <%= form.text_field :plan_id, id: :subscription_plan_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

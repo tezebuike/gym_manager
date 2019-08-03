@@ -146,6 +146,7 @@
             <th>Subscription Period</th>
             <th>Date Attended</th>
             <th>Checked-in By</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -155,6 +156,7 @@
               <td><%= attend.customer.sub_period %></td>
               <td><%= attend.date_attended %></td>
               <td><%= attend.user.full_name %></td>
+              <td><%= link_to 'Edit', edit_attendance_path(attend) %></td>
             </tr>
           <% end %>
         </tbody>

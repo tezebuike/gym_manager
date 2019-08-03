@@ -1,58 +1,76 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row justify-content-center">
+  <div class="col-xl-10 col-lg-12 col-md-9">
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="p-5">
+              <%= form_with(model: user, local: true, class:"user") do |form| %>
+                <% if user.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                    <ul>
+                    <% user.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <%= form.label :first_name, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :first_name, id: :user_first_name, class:"form-control form-control-user", placeholder:"First Name" %>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <%= form.label :last_name, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :last_name, id: :user_last_name, class:"form-control form-control-user", placeholder:"Last Name" %>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <%= form.label :username, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :username, id: :user_username, class:"form-control form-control-user", placeholder:"Username" %>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <%= form.label :role, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :role, id: :user_role, class:"form-control form-control-user" %>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <%= form.label :password, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :password, id: :user_password, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <%= form.label :password_confirmation, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :password_confirmation, id: :user_password_confirmation, class:"form-control form-control-user" %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0 custom-file">
+                    <% holder = user.avatar.present? ? user.avatar.file.try(&:filename) : "Upload Photo" %>
+                    <%= form.file_field :avatar, id: :user_avatar, class: "custom-file-input" %>
+                    <%= form.label :avatar, holder, class:"mb-0 ml-3 text-gray-800 custom-file-label" %>
+                  </div>
+                </div>
+                <hr>
+                <div>
+                  <%= form.submit class:"btn btn-primary btn-user btn-block" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <% if user.avatar? %>
-    <div class="image-wrapper">
-      <%= image_tag(user.avatar.thumb) %>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :user_first_name %>
   </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :user_last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, id: :user_username %>
-  </div>
-
-  <div class="field">
-    <%= form.label :role %>
-    <%= form.text_field :role, id: :user_role %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password, id: :user_password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.text_field :password_confirmation, id: :user_password_confirmation %>
-  </div>
-  <div class="col-4 mb-2 custom-file">
-    <% holder = user.avatar.present? ? user.avatar.file.try(&:filename) : "Upload Photo" %>
-    <%= form.file_field :avatar, id: :user_avatar, class: "custom-file-input" %>
-    <%= form.label :avatar, holder, class:"custom-file-label" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
