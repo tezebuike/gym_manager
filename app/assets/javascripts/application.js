@@ -15,8 +15,8 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require jquery-easing/jquery.easing.min.js
 //= require admin.min.js
+//= require jquery-easing/jquery.easing.min.js
 //= require datatables/jquery.dataTables.min.js
 //= require datatables/dataTables.bootstrap4.min.js
 //= require_tree .
@@ -31,4 +31,13 @@ $(document).on('turbolinks:load', function() {
   $("#dataTable").dataTable();
 
   bsCustomFileInput.init();
+
+  // Toggle the side navigation
+  $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
+    $("body").toggleClass("sidebar-toggled");
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar .collapse').collapse('hide');
+    };
+  });
 });
