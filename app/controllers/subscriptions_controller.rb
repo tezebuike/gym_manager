@@ -9,7 +9,8 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions/new
   def new
-    @subscription = Subscription.new
+    @customer = Customer.find(params[:customer_id])
+    @subscription = Subscription.new(customer_id: @customer.id) if @customer.present?
   end
 
   # GET /subscriptions/1/edit
