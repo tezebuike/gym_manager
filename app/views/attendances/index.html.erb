@@ -8,6 +8,7 @@
       <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
+            <th>Customer</th>
             <th>Subscription Period</th>
             <th>Date Attended</th>
             <th>Checked-in By</th>
@@ -17,6 +18,7 @@
         <tbody>
           <% @attendances.each do |attend| %>
             <tr>
+              <td><%= attend.customer.full_name %></td>
               <td><%= attend.customer.sub_period %></td>
               <td><%= attend.date_attended %></td>
               <td><%= attend.user.full_name %></td>

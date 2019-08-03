@@ -8,6 +8,7 @@
       <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
+            <th>Customer</th>
             <th>Plan Name</th>
             <th>Receipt number</th>
             <th>Mode of payment</th>
@@ -24,6 +25,7 @@
         <tbody>
           <% @subscriptions.each do |subscription| %>
             <tr>
+              <td><%= subscription.customer.full_name %></td>
               <td><%= subscription.plan.subscription_name %></td>
               <td><%= subscription.receipt_number %></td>
               <td><%= subscription.mode_of_payment %></td>
@@ -41,7 +43,3 @@
     </div>
   </div>
 </div>
-
-<br>
-
-<%= link_to 'New Subscription', new_subscription_path %>
