@@ -5,10 +5,19 @@ class Customer < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   validates :avatar, file_size: { less_than: 2.megabytes }
 
-  scope :active, -> {    joins(:subscriptions).merge(Subscription.current_subscribers) }
+  scope :active_customers, -> { joins(:subscriptions).merge(Subscription.current_subscribers) }
   scope :birth_month, -> { where('extract(month from date_of_birth) = ?', Date.today.month)  }
 
-  # add age group
+  enum gender: {
+    male: "male",
+    female: "female"
+  }
+
+  enum status: {
+    active: "active",
+    deactivated: "deactivated"
+  }
+
   def full_name
     return "#{first_name} #{middle_name} #{last_name}" if self.middle_name.present?
     return "#{first_name} #{last_name}"

@@ -39,8 +39,8 @@
                   </div>
 
                   <div class="col-sm-6">
-                    <%= form.label :role, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.number_field :role, id: :user_role, class:"form-control form-control-user" %>
+                    <%= form.label :role, class:"mb-2 ml-3 text-gray-800" %>
+                    <%= form.select :role, options_for_select(User.roles.keys.map(&:titleize), user.role), {}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
                 </div>
 

@@ -7,6 +7,12 @@ class Subscription < ApplicationRecord
   scope :expiry, -> { where('extract(month from end_date) = ?', Date.today.month) }
   scope :current_subscribers, -> { where("end_date > ? AND subscriptions.status = ?", Date.today, "active") }
 
+  enum status: {
+    active: "active",
+    completed: "completed",
+    deactivated: "deactivated"
+  }
+
   def sub_start_date
     self.start_date.strftime("%b %d, %Y")
   end

@@ -10,6 +10,13 @@ class User < ApplicationRecord
 
   has_many :attendances
 
+  enum role: {
+    staff: "staff",
+    trainer: "trainer",
+    admin: "admin",
+    deactivated: "deactivated"
+  }
+
   def full_name
     return "#{first_name} #{last_name}"
   end

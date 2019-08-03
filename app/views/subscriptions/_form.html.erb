@@ -51,7 +51,7 @@
 
                   <div class="col-sm-4">
                     <%= form.label :balance, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.number_field :balance, id: :subscription_balance, class:"form-control form-control-user" %>
+                    <%= form.text_field :balance, id: :subscription_balance, class:"form-control form-control-user" %>
                   </div>
                 </div>
 
@@ -67,8 +67,8 @@
                   </div>
 
                   <div class="col-sm-4">
-                    <%= form.label :status, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.text_field :status, id: :subscription_status, class:"form-control form-control-user" %>
+                    <%= form.label :status, class:"mb-2 ml-3 text-gray-800" %>
+                    <%= form.select :status, options_for_select(Subscription.statuses.keys.map(&:titleize), subscription.status), {}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
                 </div>
                 <hr>
