@@ -3,9 +3,10 @@ class Subscription < ApplicationRecord
   belongs_to :plan
 
   scope :active, -> { includes(:plan).where(status: "active") }
-  scope :upcoming, -> { where("start_date > ?", Date.today) }
-  scope :expiry, -> { where('extract(month from end_date) = ?', Date.today.month) }
-  scope :current_subscribers, -> { where("end_date > ? AND subscriptions.status = ?", Date.today, "active") }
+  scope :upcoming, -> { active.where("start_date > ?", Date.today) }
+  scope :today_expiry, -> { active.where('extract(month from end_date) = ? AND EXTRACT(day FROM end_date) = ?', Date.today.month, Date.today.day) }
+  scope :upcoming_expiry, -> { active.where('extract(month from end_date) = ? AND EXTRACT(day FROM end_date) >= ?', 1.days.from_now.month, 1.days.from_now.day) }
+  scope :current_subscribers, -> { active.where("end_date > ?", Date.today) }
 
   enum status: {
     active: "active",
