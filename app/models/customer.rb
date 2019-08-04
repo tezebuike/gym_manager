@@ -6,7 +6,8 @@ class Customer < ApplicationRecord
   validates :avatar, file_size: { less_than: 2.megabytes }
 
   scope :active_customers, -> { joins(:subscriptions).merge(Subscription.current_subscribers) }
-  scope :birth_month, -> { where('extract(month from date_of_birth) = ?', Date.today.month)  }
+  scope :today_birthday, -> { where('EXTRACT(month FROM date_of_birth) = ? AND EXTRACT(day FROM date_of_birth) = ?', Date.today.month, Date.today.day) }
+  scope :upcoming_birthday, -> { where('EXTRACT(month FROM date_of_birth) = ? AND EXTRACT(day FROM date_of_birth) >= ?', 1.days.from_now.month, 1.days.from_now.day) }
 
   enum gender: {
     male: "male",
@@ -33,5 +34,9 @@ class Customer < ApplicationRecord
 
   def sub_period
     active_subscription.try(&:subscription_period)
+  end
+
+  def birthday
+    date_of_birth.strftime("%b %d")
   end
 end
