@@ -1,6 +1,6 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Hot Desk</h1>
+  <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
   <a href="<%= new_customer_path %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> New Customer </a>
 </div>
 
@@ -53,7 +53,7 @@
             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Expirations</div>
             <div class="row no-gutters align-items-center">
               <div class="col-auto">
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @expirations.count %></div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @expirations %></div>
               </div>
               <div class="col">
                 <div class="progress progress-sm mr-2">
@@ -77,7 +77,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Upcoming Birthday</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @month_birthday.count %></div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @birthday_count %></div>
           </div>
           <div class="col-auto">
             <i class="fas fa-comments fa-2x text-gray-300"></i>
