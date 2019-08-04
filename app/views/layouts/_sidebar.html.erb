@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion collapse show" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -13,7 +13,7 @@
   <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
+  <li class="nav-item">
     <a class="nav-link" href="index.html">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
@@ -28,23 +28,23 @@
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(customers_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-cog"></i><span>Customers</span>'), customers_path, class: "nav-link side-links" %>
   </li>
 
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(subscriptions_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-table"></i><span>Subscriptions</span>'), subscriptions_path, class: "nav-link side-links" %>
   </li>
 
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(attendances_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-table"></i><span>Attendances</span>'), attendances_path, class: "nav-link side-links" %>
   </li>
 
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(plans_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-wrench"></i><span>Plans</span>'), plans_path, class: "nav-link side-links" %>
   </li>
 
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(users_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-user"></i><span>Users</span>'), users_path, class: "nav-link side-links" %>
   </li>
 
@@ -65,16 +65,16 @@
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(home_index_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-tachometer-alt"></i><span>HotDesk</span>'), home_index_path, class: "nav-link side-links" %>
   </li>
 
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(customers_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-cog"></i><span>Customers</span>'), customers_path, class: "nav-link side-links" %>
   </li>
 
   <!-- Nav Item - Charts -->
-  <li class="nav-item">
+  <li class="nav-item <%= 'active' if current_page?(plans_path) %>">
     <%= link_to raw('<i class="fas fa-fw fa-wrench"></i><span>Plans</span>'), plans_path, class: "nav-link side-links" %>
   </li>
 
