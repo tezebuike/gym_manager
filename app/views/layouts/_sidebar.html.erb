@@ -13,8 +13,8 @@
   <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item <%= 'active' if current_page?(home_index_path) %>">
-    <%= link_to raw('<i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span>'), home_index_path, class: "nav-link side-links" %>
+  <li class="nav-item <%= 'active' if current_page?(dashboard_path) %>">
+    <%= link_to raw('<i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span>'), dashboard_path, class: "nav-link side-links" %>
   </li>
 
   <li class="nav-item <%= 'active' if current_page?(customers_path) %>">
