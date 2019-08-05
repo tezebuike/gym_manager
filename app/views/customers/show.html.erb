@@ -97,7 +97,7 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered table-hover" id="dataTableu" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Plan Name</th>
@@ -140,7 +140,7 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered table-hover" id="dataTableg" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Subscription Period</th>
@@ -164,3 +164,42 @@
     </div>
   </div>
 </div>
+
+<% if @audits.present? %>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Audit Trail</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Actions</th>
+              <th>Changed Fields</th>
+              <th>Old Values</th>
+              <th>New Values</th>
+              <th>Change Comment</th>
+              <th>Modified By</th>
+              <th>Date Modified</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @audits.each do |audit| %>
+              <tr>
+                <td><%= audit.action.titleize %></td>
+                <td><%= audit.audited_changes.keys.map(&:titleize).join("<hr class='mb-0 mt-0'/>").html_safe %></td>
+                <td><%= audit.audited_changes.values.map { |e| e[0] }.join("<hr class='mb-0 mt-0'/>").html_safe %></td>
+                <td><%= audit.audited_changes.values.map { |e| e[1] }.join("<hr class='mb-0 mt-0'/>").html_safe %></td>
+                <td><%= audit.comment %></td>
+                <td><%= audit.user.full_name %></td>
+                <td><%= audit.created_at.strftime("%b %d, %Y") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

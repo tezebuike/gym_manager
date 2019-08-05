@@ -12,6 +12,7 @@ class CustomersController < ApplicationController
   def show
     @subscriptions = @customer.subscriptions
     @attendances = @customer.attendances
+    @audits = @customer.audits
   end
 
   # GET /customers/new
@@ -71,6 +72,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:slug, :first_name, :middle_name, :email, :phone_number, :address, :gender, :date_of_birth, :date_joined, :status, :avatar, :remove_avatar)
+      params.require(:customer).permit(:slug, :first_name, :middle_name, :email, :phone_number, :address, :gender, :date_of_birth, :date_joined, :status, :avatar, :remove_avatar, :audit_comment)
     end
 end

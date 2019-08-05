@@ -90,6 +90,12 @@
                     <%= form.label :avatar, holder, class:"mb-0 ml-3 text-gray-800 custom-file-label" %>
                   </div>
                 </div>
+                <% if customer.present? %>
+                  <div class="form-group">
+                    <%= form.label :audit_comment , class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :audit_comment, id: :customer_audit_comment, class:"form-control form-control-user", placeholder:"Why are you updating this customer?" %>
+                  </div>
+                <% end %>
                 <hr>
                 <div>
                   <%= form.submit class:"mb-0 btn btn-primary btn-user btn-block" %>
