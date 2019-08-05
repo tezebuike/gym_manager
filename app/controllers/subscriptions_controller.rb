@@ -37,8 +37,8 @@ class SubscriptionsController < ApplicationController
   # PATCH/PUT /subscriptions/1.json
   def update
     respond_to do |format|
-      if current_user.admin? && @subscription.update(subscription_params) 
-        format.html { redirect_to @subscription, notice: 'Subscription was successfully updated.' }
+      if @subscription.update(subscription_params) 
+        format.html { redirect_to @customer, notice: 'Subscription was successfully updated.' }
         format.json { render :show, status: :ok, location: @subscription }
       else
         format.html { render :edit }
@@ -61,6 +61,7 @@ class SubscriptionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_subscription
       @subscription = Subscription.find(params[:id])
+      @customer = @subscription.customer
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

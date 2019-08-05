@@ -2,6 +2,7 @@ class Subscription < ApplicationRecord
   belongs_to :customer
   belongs_to :plan
   has_many :attendances, through: :customer
+  audited associated_with: :customer
 
   scope :active, -> { includes(:plan).where(status: "active") }
   scope :upcoming, -> { active.where("start_date > ?", Date.today) }

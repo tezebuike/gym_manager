@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
   def show
     @subscriptions = @customer.subscriptions
     @attendances = @customer.attendances
-    @audits = @customer.audits
+    @audits = @customer.own_and_associated_audits
   end
 
   # GET /customers/new

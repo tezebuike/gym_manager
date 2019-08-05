@@ -18,7 +18,7 @@ class AttendancesController < ApplicationController
       user_id: current_user.id,
       customer_id: params[:customer_id]
     )
-    redirect_to :home_index
+    redirect_to :dashboard
   end
 
   # POST /attendances

@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   validates :avatar, file_size: { less_than: 2.megabytes }
   audited
+  has_associated_audits
 
   scope :active_customers, -> { joins(:subscriptions).merge(Subscription.current_subscribers) }
   scope :today_birthday, -> { where('EXTRACT(month FROM date_of_birth) = ? AND EXTRACT(day FROM date_of_birth) = ?', Date.today.month, Date.today.day) }
