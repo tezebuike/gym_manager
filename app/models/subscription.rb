@@ -16,6 +16,8 @@ class Subscription < ApplicationRecord
     deactivated: "deactivated"
   }
 
+  MODE_OF_PAYMENTS = ["Bank Transfer","Cash","POS","Bank Payment(Receipt required)"]
+
   def sub_start_date
     self.start_date.strftime("%b %d, %Y")
   end
