@@ -21,55 +21,82 @@
                 <% end %>
 
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :title, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :title, id: :customer_title, class:"form-control form-control-user", placeholder:"Mr, Mrs, Ms, Chief, Prof..." %>
+                  </div>
+                  <div class="col-sm-4 mb-3 mb-sm-0">
                     <%= form.label :slug, "Surefit ID", class:"mb-0 ml-3 text-gray-800" %>
                     <%= form.text_field :slug, id: :customer_slug, class:"form-control form-control-user", placeholder:"Surefit ID" %>
                   </div>
 
-                  <div class="col-sm-6">
-                    <%= form.label :first_name, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.text_field :first_name, id: :customer_first_name, class:"form-control form-control-user", placeholder:"First Name" %>
+                  <div class="col-sm-4">
+                    <%= form.label :nationality, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :nationality, id: :customer_nationality, class:"form-control form-control-user" %>
                   </div>
                 </div>
                 
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :first_name, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :first_name, id: :customer_first_name, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
                     <%= form.label :middle_name, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.text_field :middle_name, id: :customer_middle_name, class:"form-control form-control-user", placeholder:"Middle Name" %>
+                    <%= form.text_field :middle_name, id: :customer_middle_name, class:"form-control form-control-user" %>
                   </div>
 
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <%= form.label :last_name, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.text_field :last_name, id: :customer_last_name, class:"form-control form-control-user", placeholder:"Last Name" %>
+                    <%= form.text_field :last_name, id: :customer_last_name, class:"form-control form-control-user" %>
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
                     <%= form.label :email, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.text_field :email, id: :customer_email, class:"form-control form-control-user", placeholder:"Email Address" %>
+                    <%= form.text_field :email, id: :customer_email, class:"form-control form-control-user", placeholder:"john.doe@gmail.com" %>
                   </div>
 
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <%= form.label :phone_number, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.text_field :phone_number, id: :customer_phone_number, class:"form-control form-control-user", placeholder:"Phone Number" %>
+                    <%= form.text_field :phone_number, id: :customer_phone_number, class:"form-control form-control-user", placeholder:"+234-8034523423" %>
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <%= form.label :address , class:"mb-0 ml-3 text-gray-800" %>
-                  <%= form.text_field :address, id: :customer_address, class:"form-control form-control-user", placeholder:"Address" %>
+                  <div class="col-sm-4">
+                    <%= form.label :company_name, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :company_name, id: :customer_company_name, class:"form-control form-control-user" %>
+                  </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <%= form.label :date_of_birth, 'Birthday', class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.date_field :date_of_birth, id: :customer_date_of_birth, class:"form-control form-control-user", placeholder:"Date of Birth" %>
+                    <%= form.label :address, "Residential Address" , class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :address, id: :customer_address, class:"form-control form-control-user" %>
                   </div>
 
                   <div class="col-sm-6">
+                    <%= form.label :company_address, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.text_field :company_address, id: :customer_company_address, class:"form-control form-control-user" %>
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :goals, class:"mb-2 ml-3 text-gray-800" %>
+                    <%= form.select :goals, options_for_select(Customer::FITNESS_GOALS, customer.goals), {}, class: 'form-control form-control-lg form-control-user' %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :date_of_birth, 'Birthday', class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.date_field :date_of_birth, id: :customer_date_of_birth, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
                     <%= form.label :date_joined, class:"mb-0 ml-3 text-gray-800" %>
-                    <%= form.date_field :date_joined, id: :customer_date_joined, class:"form-control form-control-user", placeholder:"Date Joined" %>
+                    <%= form.date_field :date_joined, id: :customer_date_joined, class:"form-control form-control-user" %>
                   </div>
                 </div>
 
@@ -90,7 +117,7 @@
                     <%= form.label :avatar, holder, class:"mb-0 ml-3 text-gray-800 custom-file-label" %>
                   </div>
                 </div>
-                <% if customer.present? %>
+                <% if customer.id.present? %>
                   <div class="form-group">
                     <%= form.label :audit_comment , class:"mb-0 ml-3 text-gray-800" %>
                     <%= form.text_field :audit_comment, id: :customer_audit_comment, class:"form-control form-control-user", placeholder:"Why are you updating this customer?" %>

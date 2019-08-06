@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190806210637) do
+ActiveRecord::Schema.define(version: 20190806224206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20190806210637) do
     t.string "company_name"
     t.string "company_address"
     t.string "nationality"
-    t.text "goals", default: [], array: true
+    t.string "goals"
     t.index ["slug"], name: "index_customers_on_slug"
   end
 

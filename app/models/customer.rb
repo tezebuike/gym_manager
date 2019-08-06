@@ -21,9 +21,17 @@ class Customer < ApplicationRecord
     deactivated: "deactivated"
   }
 
+  FITNESS_GOALS = [ "Lose Body Fat",
+    "Strength and Power",
+    "Muscular Endurance",
+    "Cadio Fitness",
+    "Flexibility",
+    "Core Stability or Balance"
+  ]
+
   def full_name
-    return "#{first_name} #{middle_name} #{last_name}" if self.middle_name.present?
-    return "#{first_name} #{last_name}"
+    return "#{title} #{first_name} #{middle_name} #{last_name}" if self.middle_name.present?
+    return "#{title} #{first_name} #{last_name}"
   end
 
   def active_subscription
