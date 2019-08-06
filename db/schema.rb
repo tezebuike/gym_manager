@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190805063416) do
+ActiveRecord::Schema.define(version: 20190806210637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20190805063416) do
     t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id", "date_attended"], name: "index_attendances_on_customer_id_and_date_attended"
+    t.index ["customer_id", "date_attended"], name: "index_attendances_on_customer_id_and_date_attended", unique: true
     t.index ["customer_id"], name: "index_attendances_on_customer_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
@@ -64,6 +64,11 @@ ActiveRecord::Schema.define(version: 20190805063416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.string "title"
+    t.string "company_name"
+    t.string "company_address"
+    t.string "nationality"
+    t.text "goals", default: [], array: true
     t.index ["slug"], name: "index_customers_on_slug"
   end
 
@@ -88,6 +93,8 @@ ActiveRecord::Schema.define(version: 20190805063416) do
     t.bigint "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "notes"
+    t.string "prepared_by"
     t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
     t.index ["plan_id"], name: "index_subscriptions_on_plan_id"
   end
