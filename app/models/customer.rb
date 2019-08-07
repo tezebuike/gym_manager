@@ -53,4 +53,10 @@ class Customer < ApplicationRecord
   def active_membership_plan
     self.active_subscription.plan.membership_type
   end
+
+  # Thinking this is better off as a class method but I need the last id
+  # which I dont want to store in redis for now
+  def generate_surefit_slug
+    return "SF.#{id.to_i + 1}"
+  end
 end
