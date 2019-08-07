@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions/new
   def new
     @customer = Customer.find(params[:customer_id])
-    @subscription = Subscription.new(customer_id: @customer.id) if @customer.present?
+    @subscription = Subscription.new(customer_id: @customer.id, prepared_by: current_user.full_name) if @customer.present?
   end
 
   # GET /subscriptions/1/edit
@@ -66,6 +66,7 @@ class SubscriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscription_params
-      params.require(:subscription).permit(:receipt_number, :mode_of_payment, :start_date, :end_date, :amount_paid, :balance, :discount, :status, :customer_id, :plan_id)
+      params.require(:subscription).permit(:receipt_number, :mode_of_payment, :start_date, :end_date, :amount_paid, :balance, :discount, :status, :customer_id, :plan_id,
+      :notes, :prepared_by)
     end
 end

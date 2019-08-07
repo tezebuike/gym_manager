@@ -116,6 +116,7 @@
             <th>Balance</th>
             <th>Discount</th>
             <th>Status</th>
+            <th>Notes</th>
             <th>Prepared By</th>
             <th>Actions</th>
           </tr>
@@ -133,6 +134,7 @@
               <td><%= subscription.balance %></td>
               <td><%= subscription.discount %></td>
               <td><%= subscription.status %></td>
+              <td><%= subscription.notes %></td>
               <td><%= subscription.prepared_by %></td>
               <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
             </tr>
