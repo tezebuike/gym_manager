@@ -9,7 +9,7 @@
         <thead>
           <tr>
             <th>Customer</th>
-            <th>Plan Name</th>
+            <th>Membership Type</th>
             <th>Receipt number</th>
             <th>Mode of payment</th>
             <th>Start date</th>
@@ -28,7 +28,7 @@
           <% @subscriptions.each do |subscription| %>
             <tr>
               <td><%= subscription.customer.full_name %></td>
-              <td><%= subscription.plan.subscription_name %></td>
+              <td><%= subscription.plan.membership_type %></td>
               <td><%= subscription.receipt_number %></td>
               <td><%= subscription.mode_of_payment %></td>
               <td><%= subscription.start_date %></td>
