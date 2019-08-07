@@ -189,6 +189,7 @@
           <thead>
             <tr>
               <th>Audited Table</th>
+              <th>Audited ID</th>
               <th>Actions</th>
               <th>Changed Fields</th>
               <th>Old Values</th>
@@ -203,6 +204,7 @@
             <% @audits.each do |audit| %>
               <tr>
                 <td><%= audit.auditable_type %></td>
+                <td><%= audit.auditable_id %></td>
                 <td><%= audit.action.titleize %></td>
                 <% if audit.action == "update" %>
                   <td><%= audit.audited_changes.keys.map(&:titleize).join("<hr class='mb-0 mt-0'/>").html_safe %></td>
