@@ -4,7 +4,7 @@ class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendances = Attendance.all
+    @attendances = Attendance.includes(:customer)
   end
 
   # GET /attendances/1/edit

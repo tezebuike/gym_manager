@@ -9,6 +9,7 @@
         <thead>
           <tr>
             <th>Customer</th>
+            <th>Membership Type</th>
             <th>Subscription Period</th>
             <th>Date Attended</th>
             <th>Checked-in By</th>
@@ -20,6 +21,7 @@
           <% @attendances.each do |attend| %>
             <tr>
               <td><%= attend.customer.full_name %></td>
+              <td><%= attend.customer.active_membership_plan %></td>
               <td><%= attend.customer.sub_period %></td>
               <td><%= attend.date_attended %></td>
               <td><%= attend.user.full_name %></td>

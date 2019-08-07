@@ -49,4 +49,8 @@ class Customer < ApplicationRecord
   def birthday
     date_of_birth.strftime("%b %d")
   end
+
+  def active_membership_plan
+    self.active_subscription.plan.membership_type
+  end
 end
