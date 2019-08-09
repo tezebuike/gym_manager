@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.filter(params.slice(:plan_type, :mode_of_payment, :end_date, :start_date, :status, :prepared_by))
   end
 
   # GET /subscriptions/new

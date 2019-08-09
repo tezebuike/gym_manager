@@ -4,6 +4,19 @@ class Subscription < ApplicationRecord
   has_many :attendances, through: :customer
   audited associated_with: :customer
 
+  scope :filter, lambda { |params|
+    chain = all
+    chain.where!(mode_of_payment: params[:mode_of_payment]) if params[:mode_of_payment].present?
+    chain.where!(status: params[:status]) if params[:status].present?
+    chain.where!(start_date: params[:start_date]) if params[:start_date].present?
+    chain.where!(end_date: params[:end_date]) if params[:end_date].present?
+    chain.where!(prepared_by: params[:prepared_by]) if params[:prepared_by].present?
+    if params[:plan_type].present?
+      chain = chain.joins(:plan).where(plans: {id: params[:plan_type]})
+    end
+    chain
+  }
+
   scope :active, -> { includes(:plan).where(status: "active") }
   scope :upcoming, -> { active.where("start_date > ?", Date.today) }
   scope :today_expiry, -> { active.where('extract(month from end_date) = ? AND EXTRACT(day FROM end_date) = ?', Date.today.month, Date.today.day) }

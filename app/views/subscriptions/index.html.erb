@@ -4,6 +4,51 @@
 
 <div class="card shadow mb-4">
   <div class="card-body">
+    <div>
+      <%= form_tag(subscriptions_path, class:"user", method: :get) do %>
+        <div class="form-group row">
+          <div class="col-sm-3 mb-3 mb-sm-0">
+            <%= label_tag "Select a Membership Plan", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= select_tag :plan_type, options_for_select(Plan.all.map{|plan| [plan.membership_type, plan.id]}, params[:plan_type]), include_blank: true, class: 'form-control form-control-lg form-control-user' %>
+          </div>
+
+          <div class="col-sm-3">
+            <%= label_tag "Status", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= select_tag :status, options_for_select(Subscription.statuses.keys, params[:status]), include_blank: true, class: 'form-control form-control-lg form-control-user' %>
+          </div>
+
+          <div class="col-sm-3">
+            <%= label_tag "Mode of Payment", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= select_tag :mode_of_payment, options_for_select(Subscription::MODE_OF_PAYMENTS, params[:mode_of_payment]), include_blank: true, class: 'form-control form-control-lg form-control-user' %>
+          </div>
+
+          <div class="col-sm-3">
+            <%= label_tag "Prepared By", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= select_tag :prepared_by, options_for_select(User.all.map(&:full_name), params[:prepared_by]), include_blank: true, class: 'form-control form-control-lg form-control-user' %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 mb-3 mb-sm-0">
+            <%= label_tag "Start Date", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= date_field_tag :start_date, params[:start_date], include_blank: true, class: 'form-control' %>
+          </div>
+
+          <div class="col-sm-3">
+            <%= label_tag "End Date", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= date_field_tag :end_date, params[:end_date], include_blank: true, class: 'form-control' %>
+          </div>
+
+          <div class="col-sm-6">
+            <%= submit_tag "Filter", class:"btn btn-primary mt-4 btn-user btn-block float-right", style:"width: 20%;" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="card shadow mb-4">
+  <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
         <thead>
