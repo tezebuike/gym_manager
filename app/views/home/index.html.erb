@@ -124,7 +124,7 @@
               <td>
                 <%= link_to 'Edit', edit_customer_path(cs.customer) %>
                 <% if cs.customer.last_date_attended != Date.today  %>
-                   | <%= link_to 'Check-In', take_attendances_path(user_id: current_user.id, customer_id: cs.customer.id) %>
+                   | <%= link_to 'Check-In', take_attendances_path(customer_id: cs.customer.id) %>
                 <% end %>
               </td>
             </tr>
