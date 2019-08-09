@@ -40,7 +40,8 @@
           </div>
 
           <div class="col-sm-6">
-            <%= submit_tag "Filter", class:"btn btn-primary mt-4 btn-user btn-block float-right", style:"width: 20%;" %>
+            <%= link_to 'Expire Subscriptions', expire_subscriptions_path, class:"btn btn-primary mt-4 btn-user btn-block float-right", style:"width: 30%;" %>
+            <%= submit_tag "Filter", class:"btn btn-primary mt-4 btn-user btn-block", style:"width: 20%;" %>
           </div>
         </div>
       <% end %>

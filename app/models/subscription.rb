@@ -22,6 +22,7 @@ class Subscription < ApplicationRecord
   scope :today_expiry, -> { active.where('extract(month from end_date) = ? AND EXTRACT(day FROM end_date) = ?', Date.today.month, Date.today.day) }
   scope :upcoming_expiry, -> { active.where('extract(month from end_date) = ? AND EXTRACT(day FROM end_date) >= ?', 1.days.from_now.month, 1.days.from_now.day) }
   scope :current_subscribers, -> { active.where("end_date >= ?", Date.today) }
+  scope :expired, -> { active.where("end_date < ?", Date.today) }
 
   enum status: {
     active: "active",

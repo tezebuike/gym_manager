@@ -7,7 +7,12 @@ Rails.application.routes.draw do
       get :take
     end
   end
-  resources :subscriptions, except: [:show]
+  resources :subscriptions, except: [:show] do
+    collection do
+      get :expire
+    end
+  end
+
   resources :customers
   resources :plans, except: [:show]
   root 'sessions#new'

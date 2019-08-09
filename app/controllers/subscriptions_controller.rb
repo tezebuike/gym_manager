@@ -18,6 +18,18 @@ class SubscriptionsController < ApplicationController
   def edit
   end
 
+  def expire
+    expired_subscriptions = Subscription.expired
+    if expired_subscriptions.present?
+      expired_subscriptions.each do |subscription|
+        subscription.update({status: :completed})
+      end
+      redirect_to :subscriptions, notice: "#{expired_subscriptions.count} has been completed"
+    else
+      redirect_to :subscriptions, notice: "There are no expired subscriptions today"
+    end
+  end
+
   # POST /subscriptions
   # POST /subscriptions.json
   def create
@@ -51,7 +63,7 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1
   # DELETE /subscriptions/1.json
   def destroy
-    @subscription.update_attribute({status: "deleted"}) if current_user.admin?
+    @subscription.update_attribute({status: :deactivated}) if current_user.admin?
     respond_to do |format|
       format.html { redirect_to subscriptions_url, notice: 'Subscription was successfully deleted.' }
       format.json { head :no_content }
