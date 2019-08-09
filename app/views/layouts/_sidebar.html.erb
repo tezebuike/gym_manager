@@ -25,30 +25,32 @@
     <%= link_to raw('<i class="fas fa-fw fa-wrench"></i><span>Plans</span>'), plans_path, class: "nav-link side-links" %>
   </li>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+  <% if current_user.admin? %>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Admin
-  </div>
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Admin
+    </div>
 
-  <li class="nav-item <%= 'active' if current_page?(subscriptions_path) %>">
-    <%= link_to raw('<i class="fas fa-fw fa-table"></i><span>Subscriptions</span>'), subscriptions_path, class: "nav-link side-links" %>
-  </li>
+    <li class="nav-item <%= 'active' if current_page?(subscriptions_path) %>">
+      <%= link_to raw('<i class="fas fa-fw fa-table"></i><span>Subscriptions</span>'), subscriptions_path, class: "nav-link side-links" %>
+    </li>
 
-  <li class="nav-item <%= 'active' if current_page?(attendances_path) %>">
-    <%= link_to raw('<i class="fas fa-fw fa-table"></i><span>Attendances</span>'), attendances_path, class: "nav-link side-links" %>
-  </li>
+    <li class="nav-item <%= 'active' if current_page?(attendances_path) %>">
+      <%= link_to raw('<i class="fas fa-fw fa-table"></i><span>Attendances</span>'), attendances_path, class: "nav-link side-links" %>
+    </li>
 
-  <li class="nav-item <%= 'active' if current_page?(users_path) %>">
-    <%= link_to raw('<i class="fas fa-fw fa-user"></i><span>Users</span>'), users_path, class: "nav-link side-links" %>
-  </li>
+    <li class="nav-item <%= 'active' if current_page?(users_path) %>">
+      <%= link_to raw('<i class="fas fa-fw fa-user"></i><span>Users</span>'), users_path, class: "nav-link side-links" %>
+    </li>
 
-  <!-- Nav Item - Reports -->
-  <li class="nav-item <%= 'active' if current_page?("#") %>">
-    <%= link_to raw('<i class="fas fa-fw fa-chart-area"></i><span>Reports</span>'), "#", class: "nav-link side-links" %>
-  </li>
+    <!-- Nav Item - Reports -->
+    <li class="nav-item <%= 'active' if current_page?("#") %>">
+      <%= link_to raw('<i class="fas fa-fw fa-chart-area"></i><span>Reports</span>'), "#", class: "nav-link side-links" %>
+    </li>
+  <% end %>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
