@@ -4,6 +4,47 @@
 
 <div class="card shadow mb-4">
   <div class="card-body">
+    <div>
+      <%= form_tag(attendances_path, class:"user", method: :get) do %>
+        <div class="form-group row">
+          <div class="col-sm-3 mb-3 mb-sm-0">
+            <%= label_tag "Select a date", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= date_field_tag :date_attended, params[:date_attended], include_blank: true, class: 'form-control' %>
+          </div>
+
+          <div class="col-sm-3">
+            <%= label_tag "From", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= date_field_tag :from_date, params[:from_date], include_blank: true, class: 'form-control' %>
+          </div>
+
+          <div class="col-sm-3 mb-3 mb-sm-0">
+            <%= label_tag "To", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= date_field_tag :to_date, params[:to_date], include_blank: true, class: 'form-control' %>
+          </div>
+
+          <div class="col-sm-3">
+            <%= label_tag "Select a Week", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= date_field_tag :week, params[:week], include_blank: true, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 mb-3 mb-sm-0">
+            <%= label_tag "Start a Month", nil, class:"mb-2 ml-1 text-gray-800" %>
+            <%= select_tag :month, options_for_select((1..12).map {|m| [Date::MONTHNAMES[m], m]}, params[:month]), include_blank: true, class: 'form-control form-control-lg form-control-user' %>
+          </div>
+
+          <div class="col-sm-9">
+            <%= submit_tag "Filter", class:"btn btn-primary mt-4 btn-user btn-block float-right", style:"width: 20%;" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow mb-4">
+  <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
         <thead>

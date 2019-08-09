@@ -4,7 +4,7 @@ class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendances = Attendance.includes(:customer)
+    @attendances = Attendance.filter(params.slice(:date_attended, :from_date, :to_date, :month, :week))
   end
 
   # GET /attendances/1/edit
