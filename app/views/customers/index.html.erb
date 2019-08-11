@@ -108,7 +108,7 @@
             <tr>
               <td><%= customer.slug %></td>
               <td><%= link_to customer.full_name, customer %></td>
-              <td><%= customer.gender.titleize %></td>
+              <td><%= customer.gender.titleize if customer.gender.present? %></td>
               <td><%= customer.date_joined %></td>
               <td><%= customer.status %></td>
               <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
