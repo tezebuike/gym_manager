@@ -27,8 +27,8 @@
               <td><%= plan.plan_type %></td>
               <td><%= plan.duration %></td>
               <% if current_user.admin? %>
-                <td><%= link_to 'Edit', edit_plan_path(plan) %> |
-                    <%= link_to 'Delete', plan, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <td><%= link_to 'Edit', edit_plan_path(plan), class: "btn btn-primary d-sm-inline-block btn-sm" %>
+                    <%= link_to 'Delete', plan, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger d-sm-inline-block btn-sm" %>
                 </td>
               <% end %>
             </tr>
@@ -38,7 +38,3 @@
     </div>
   </div>
 </div>
-
-<br>
-
-<%= link_to 'New Plan', new_plan_path %>

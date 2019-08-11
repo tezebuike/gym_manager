@@ -66,8 +66,8 @@
               <td><%= attend.customer.sub_period %></td>
               <td><%= attend.date_attended %></td>
               <td><%= attend.user.full_name %></td>
-              <td><%= link_to 'Edit', edit_attendance_path(attend) %> |
-                  <%= link_to 'Delete', attend, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <td><%= link_to 'Edit', edit_attendance_path(attend), class: "btn btn-primary d-sm-inline-block btn-sm" %>
+                  <%= link_to 'Delete', attend, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger d-sm-inline-block btn-sm" %>
             </tr>
           <% end %>
         </tbody>

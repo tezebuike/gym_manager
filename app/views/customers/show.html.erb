@@ -136,7 +136,7 @@
               <td><%= subscription.status %></td>
               <td><%= subscription.notes %></td>
               <td><%= subscription.prepared_by %></td>
-              <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
+              <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -169,7 +169,7 @@
               <td><%= attend.customer.sub_period %></td>
               <td><%= attend.date_attended %></td>
               <td><%= attend.user.full_name %></td>
-              <td><%= link_to 'Edit', edit_attendance_path(attend) %></td>
+              <td><%= link_to 'Edit', edit_attendance_path(attend), class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -216,7 +216,7 @@
                   <td><%= audit.audited_changes.values.join(", ") %></td>
                 <% end %>
                 <td><%= audit.comment %></td>
-                <td><%= audit.user.full_name %></td>
+                <td><%= audit.user.full_name if audit.user.present? %></td>
                 <td><%= audit.created_at.strftime("%b %d, %Y") %></td>
               </tr>
             <% end %>

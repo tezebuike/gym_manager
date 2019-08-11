@@ -111,7 +111,7 @@
               <td><%= customer.gender.titleize if customer.gender.present? %></td>
               <td><%= customer.date_joined %></td>
               <td><%= customer.status %></td>
-              <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+              <td><%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>

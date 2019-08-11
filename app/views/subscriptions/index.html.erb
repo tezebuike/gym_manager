@@ -85,7 +85,7 @@
               <td><%= subscription.status %></td>
               <td><%= subscription.notes %></td>
               <td><%= subscription.prepared_by %></td>
-              <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
+              <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>

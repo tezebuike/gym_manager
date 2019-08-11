@@ -25,8 +25,8 @@
               <td><%= user.last_name %></td>
               <td><%= user.username %></td>
               <td><%= user.role %></td>
-              <td><%= link_to 'Edit', edit_user_path(user) %> |
-                  <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary d-sm-inline-block btn-sm" %>
+                  <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger d-sm-inline-block btn-sm" %>
               </td>
             </tr>
           <% end %>
@@ -35,6 +35,3 @@
     </div>
   </div>
 </div>
-<br>
-
-<%= link_to 'New User', new_user_path %>

@@ -51,7 +51,7 @@ class Customer < ApplicationRecord
   end
 
   def active_membership_plan
-    self.active_subscription.plan.membership_type
+    self.active_subscription.plan.membership_type if self.active_subscription.present?
   end
 
   # Thinking this is better off as a class method but I need the last id

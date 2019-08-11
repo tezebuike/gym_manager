@@ -122,9 +122,9 @@
               <td><%= cs.end_date %></td>
               <td><%= cs.customer.last_date_attended %></td>
               <td>
-                <%= link_to 'Edit', edit_customer_path(cs.customer) %>
+                <%= link_to 'Edit', edit_customer_path(cs.customer), class: "btn btn-primary d-sm-inline-block btn-sm" %>
                 <% if cs.customer.last_date_attended != Date.today  %>
-                   | <%= link_to 'Check-In', take_attendances_path(customer_id: cs.customer.id) %>
+                  <%= link_to 'Check-In', take_attendances_path(customer_id: cs.customer.id), class: "btn btn-warning d-sm-inline-block btn-sm" %>
                 <% end %>
               </td>
             </tr>
