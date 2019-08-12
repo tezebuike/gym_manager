@@ -28,7 +28,9 @@ $(document).on('turbolinks:load', function() {
     })
   }, 2000);
 
-  $('[id^="dataTable"]').dataTable();
+  $('[id^="dataTable"]').dataTable( {
+    "order": []
+  });
 
   bsCustomFileInput.init();
 
