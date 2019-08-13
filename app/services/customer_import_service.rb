@@ -44,10 +44,10 @@ class CustomerImportService
       title = names.first.split('.')[0].capitalize + "."
       names.delete(title)
     end
-    last_name = names[0]
-    first_name = names[1] if names[1].present?
+    last_name = names[0].capitalize
+    first_name = names[1].capitalize if names[1].present?
     first_name = last_name if first_name.nil?
-    middle_name = names[2] if names[2].present?
+    middle_name = names[2].capitalize if names[2].present?
 
     return {
       title: title,
