@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authorize
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :consent_form]
 
   # GET /customers
   # GET /customers.json
@@ -20,6 +20,20 @@ class CustomersController < ApplicationController
   def new
     @customer = Customer.new
     @customer.slug = @customer.generate_surefit_slug
+  end
+
+  def consent_form
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "consent.pdf",
+        template: "customers/consent_form.html.erb",
+        page_size: 'A4',
+        zoom: 1,
+        dpi: 75,
+        layout: "pdf.html"
+      end
+    end
   end
 
   # GET /customers/1/edit

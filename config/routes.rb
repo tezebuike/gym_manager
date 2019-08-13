@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :customers
+  resources :customers do
+    member do
+      get :consent_form
+    end
+  end
   resources :plans, except: [:show]
   root 'sessions#new'
 
