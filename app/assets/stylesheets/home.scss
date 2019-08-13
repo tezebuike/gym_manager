@@ -27,3 +27,9 @@
   letter-spacing: .05rem;
   z-index: 1;
 }
+
+.scrollable-menu {
+  height: auto;
+  max-height: 300px;
+  overflow-y: auto !important;
+}

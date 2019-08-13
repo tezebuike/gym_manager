@@ -21,38 +21,39 @@
         <h6 class="dropdown-header">
           Alerts Center
         </h6>
-
-        <% Subscription.today_expiry.each do |subs| %>
-          <%= link_to(subs.customer, class: "dropdown-item d-flex align-items-center") do %>
-            <div class="mr-3">
-              <div class="icon-circle bg-danger">
-                <i class="fas fa-exclamation-triangle text-white"></i>
+        <div class="scrollable-menu">
+          <% Subscription.today_expiry.each do |subs| %>
+            <%= link_to(subs.customer, class: "dropdown-item d-flex align-items-center") do %>
+              <div class="mr-3">
+                <div class="icon-circle bg-danger">
+                  <i class="fas fa-exclamation-triangle text-white"></i>
+                </div>
               </div>
-            </div>
-            <div>
-              <div class="small text-gray-500"><%= subs.sub_end_date %></div>
-              <span class="font-weight-bold"><%= "#{subs.customer.full_name}'s subscription expires today!" %></span><br>
-              <%= "Balance to pay: ₦#{subs.balance}" %>
-            </div>
-          <% end %>
-        <% end %>
-
-        <div class="dropdown-item text-center small text-gray-500">Expiring Subscriptions</div>
-
-        <% Subscription.upcoming_expiry.each do |subs| %>
-          <%= link_to(subs.customer, class: "dropdown-item d-flex align-items-center") do %>
-            <div class="mr-3">
-              <div class="icon-circle bg-warning">
-                <i class="fas fa-exclamation-triangle text-white"></i>
+              <div>
+                <div class="small text-gray-500"><%= subs.sub_end_date %></div>
+                <span class="font-weight-bold"><%= "#{subs.customer.full_name}'s subscription expires today!" %></span><br>
+                <%= "Balance to pay: ₦#{subs.balance}" %>
               </div>
-            </div>
-            <div>
-              <div class="small text-gray-500"><%= subs.sub_end_date %></div>
-              <%= "#{subs.customer.full_name}'s subscription expires soon!" %><br>
-              <%= "Balance to pay: ₦#{subs.balance}" %>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+
+          <div class="dropdown-item text-center small text-gray-500">Expiring Subscriptions</div>
+
+          <% Subscription.upcoming_expiry.each do |subs| %>
+            <%= link_to(subs.customer, class: "dropdown-item d-flex align-items-center") do %>
+              <div class="mr-3">
+                <div class="icon-circle bg-warning">
+                  <i class="fas fa-exclamation-triangle text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500"><%= subs.sub_end_date %></div>
+                <%= "#{subs.customer.full_name}'s subscription expires soon!" %><br>
+                <%= "Balance to pay: ₦#{subs.balance}" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
         <div class="dropdown-item text-center small text-gray-500">-</div>
       </div>
     </li>
@@ -69,32 +70,33 @@
         <h6 class="dropdown-header">
           Birthday Reminders
         </h6>
-
-        <% Customer.today_birthday.each do |customer| %>
-          <%= link_to(customer, class: "dropdown-item d-flex align-items-center") do %>
-            <div class="dropdown-list-image mr-3">
-              <img class="rounded-circle" src="<%= customer.avatar.thumb %>" alt="">
-              <div class="status-indicator bg-success"></div>
-            </div>
-            <div class="font-weight-bold">
-              <div class="text-truncate"><%= customer.birthday %></div>
-              <div class="small text-gray-500"><%= customer.full_name %> · Today!</div>
-            </div>
+        <div class="scrollable-menu">
+          <% Customer.today_birthday.each do |customer| %>
+            <%= link_to(customer, class: "dropdown-item d-flex align-items-center") do %>
+              <div class="dropdown-list-image mr-3">
+                <img class="rounded-circle" src="<%= customer.avatar.thumb %>" alt="">
+                <div class="status-indicator bg-success"></div>
+              </div>
+              <div class="font-weight-bold">
+                <div class="text-truncate"><%= customer.birthday %></div>
+                <div class="small text-gray-500"><%= customer.full_name %> · Today!</div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-        <div class="dropdown-item text-center small text-gray-500">Upcoming Birthdays</div>
-        <% Customer.upcoming_birthday.each do |customer| %>
-          <%= link_to(customer, class: "dropdown-item d-flex align-items-center") do %>
-            <div class="dropdown-list-image mr-3">
-              <img class="rounded-circle" src="<%= customer.avatar.thumb %>" alt="">
-              <div class="status-indicator bg-warning"></div>
-            </div>
-            <div class="font-weight-bold">
-              <div class="text-truncate"><%= customer.birthday %></div>
-              <div class="small text-gray-500"><%= "#{customer.full_name} · in #{time_ago_in_words(customer.birthday)} time" %></div>
-            </div>
+          <div class="dropdown-item text-center small text-gray-500">Upcoming Birthdays</div>
+          <% Customer.upcoming_birthday.each do |customer| %>
+            <%= link_to(customer, class: "dropdown-item d-flex align-items-center") do %>
+              <div class="dropdown-list-image mr-3">
+                <img class="rounded-circle" src="<%= customer.avatar.thumb %>" alt="">
+                <div class="status-indicator bg-warning"></div>
+              </div>
+              <div class="font-weight-bold">
+                <div class="text-truncate"><%= customer.birthday %></div>
+                <div class="small text-gray-500"><%= "#{customer.full_name} · in #{time_ago_in_words(customer.birthday)} time" %></div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
         <div class="dropdown-item text-center small text-gray-500">.</div>
       </div>
     </li>
