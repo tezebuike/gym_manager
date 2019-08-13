@@ -36,6 +36,8 @@ gem "audited", "~> 4.9"
 # For Image Storage variant
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'file_validators'
+gem 'wicked_pdf', '~> 1.1'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
