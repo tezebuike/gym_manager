@@ -75,9 +75,7 @@
         </div>
         <div class="row no-gutters">
           <div class="col-xl-1 col-md-1 mb-2">
-            <div class="text-capitalize">
-              <a href="<%= edit_customer_path(@customer) %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit </a>
-            </div>
+            <a href="<%= edit_customer_path(@customer) %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-edit fa-sm text-white-50"></i> Edit </a>
           </div>
           <% if @customer.avatar? %>
             <div class="col-xl-2 col-md-2 mb-2">
@@ -87,15 +85,11 @@
               <% end %>
             </div>
           <% end %>
-          <div class="col-xl-3 col-md-3 mb-2 pl-3">
-            <div class="text-capitalize">
-              <a href="<%= new_subscription_path(customer_id: @customer.id) %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> New Subscription </a>
-            </div>
+          <div class="col-xl-2 col-md-3 mb-2 pl-3">
+            <a href="<%= new_subscription_path(customer_id: @customer.id) %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Subscription</a>
           </div>
-          <div class="col-xl-3 col-md-3 mb-2 pl-3">
-            <div class="text-capitalize">
-              <a href="<%= consent_form_customer_path(@customer) %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Print Consent Form </a>
-            </div>
+          <div class="col-xl-2 col-md-3 mb-2 pl-3">
+            <a href="<%= consent_form_customer_path(@customer) %>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Consent Form</a>
           </div>
         </div> 
       </div>
