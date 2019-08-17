@@ -9,7 +9,7 @@
       <!-- Card Header - Dropdown -->
       <div class="card-header py-2 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary"><%= @customer.slug %></h6>
-        <div class="d-sm-inline-block btn btn-sm btn-success"><%= @customer.status %></div>
+        <div class="<%= status_class(@customer.status) %>"><%= @customer.status %></div>
       </div>
       <!-- Card Body -->
       <div class="card-body">
@@ -230,8 +230,10 @@
   </div>
 </div>
 
+<div id="show-audit-table" class="d-sm-inline-block btn btn-sm btn-success mb-4">Show Audits</div>
+
 <% if @audits.present? %>
-  <div class="card shadow mb-4">
+  <div id="audit-table" class="card shadow mb-4 hide">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Audit Trail</h6>
     </div>
@@ -278,3 +280,11 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  $('#audit-table').hide();
+  $(document).on('click', '#show-audit-table', function(){
+    $('#show-audit-table').remove();
+    $('#audit-table').show();
+  });
+</script>
