@@ -182,7 +182,7 @@
               <td><%= subscription.audits.count %></td>
               <td>
                 <%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary d-sm-inline-block btn-sm" %>
-                <% if subscription.paused_date.present? %>
+                <% if subscription.paused? %>
                   | <%= link_to 'Restart', restart_subscription_path(subscription), method: :post, class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
                 <% elsif subscription.active? %>
                   | <%= link_to 'Pause', pause_subscription_path(subscription), method: :post, class: "btn btn-primary d-sm-inline-block btn-sm" %></td>

@@ -47,7 +47,7 @@ class SubscriptionsController < ApplicationController
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_back(fallback_location: @subscription.customer, notice: 'Subscription was successfully created.') }
+        format.html { redirect_to @customer, notice: 'Subscription was successfully created.' }
         format.json { render :show, status: :created, location: @subscription }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@ class SubscriptionsController < ApplicationController
   def update
     respond_to do |format|
       if @subscription.update(subscription_params)
-        format.html { redirect_back(fallback_location: @subscription.customer, notice: 'Subscription was successfully updated.') }
+        format.html { redirect_to @customer, notice: 'Subscription was successfully updated.' }
         format.json { render :show, status: :ok, location: @subscription }
       else
         format.html { render :edit }
