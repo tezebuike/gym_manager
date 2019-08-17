@@ -121,6 +121,7 @@
             <th>Balance</th>
             <th>Discount</th>
             <th>Status</th>
+            <th>Paused Date</th>
             <th>Notes</th>
             <th>Prepared By</th>
             <th>No of Changes</th>
@@ -140,10 +141,18 @@
               <td><%= subscription.balance %></td>
               <td><%= subscription.discount %></td>
               <td><%= subscription.status %></td>
+              <td><%= subscription.paused_date %></td>
               <td><%= subscription.notes %></td>
               <td><%= subscription.prepared_by %></td>
               <td><%= subscription.audits.count %></td>
-              <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
+              <td>
+                <%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary d-sm-inline-block btn-sm" %>
+                <% if subscription.paused_date.present? %>
+                  | <%= link_to 'Restart', restart_subscription_path(subscription), method: :post, class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
+                <% elsif subscription.active? %>
+                  | <%= link_to 'Pause', pause_subscription_path(subscription), method: :post, class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

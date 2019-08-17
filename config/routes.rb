@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     collection do
       get :expire
     end
+    member do
+      post :pause
+      post :restart
+    end
   end
 
   resources :customers do

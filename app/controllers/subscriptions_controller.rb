@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :authorize
-  before_action :set_subscription, only: [:show, :edit, :update, :destroy]
+  before_action :set_subscription, only: [:show, :edit, :pause, :restart, :update, :destroy]
 
   # GET /subscriptions
   # GET /subscriptions.json
@@ -30,6 +30,16 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def pause
+    @subscription.update(paused_date: Date.today, status: :paused)
+    redirect_to @subscription.customer
+  end
+
+  def restart
+    @subscription.update(paused_date: nil, status: :active)
+    redirect_to @subscription.customer
+  end
+
   # POST /subscriptions
   # POST /subscriptions.json
   def create
@@ -50,7 +60,7 @@ class SubscriptionsController < ApplicationController
   # PATCH/PUT /subscriptions/1.json
   def update
     respond_to do |format|
-      if @subscription.update(subscription_params) 
+      if @subscription.update(subscription_params)
         format.html { redirect_to @customer, notice: 'Subscription was successfully updated.' }
         format.json { render :show, status: :ok, location: @subscription }
       else
