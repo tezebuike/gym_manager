@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :measurements
+  resources :measurements, except: [:show]
   get '/dashboard', to: 'home#index'
 
   resources :attendances, except: [:new, :show]
