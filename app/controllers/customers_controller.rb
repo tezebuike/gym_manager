@@ -14,6 +14,7 @@ class CustomersController < ApplicationController
     @subscriptions = @customer.subscriptions
     @attendances = @customer.attendances
     @audits = @customer.own_and_associated_audits
+    @measurements = @customer.measurements
   end
 
   # GET /customers/new

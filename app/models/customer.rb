@@ -2,6 +2,7 @@ class Customer < ApplicationRecord
   has_many :subscriptions
   has_many :plans, :through => :subscriptions
   has_many :attendances
+  has_many :measurements
   mount_uploader :avatar, AvatarUploader
   validates :avatar, file_size: { less_than: 2.megabytes }
   audited

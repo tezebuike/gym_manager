@@ -8,6 +8,7 @@ class CreateMeasurements < ActiveRecord::Migration[5.1]
       t.float :arms
       t.float :height
       t.float :bmi
+      t.references :customer
 
       t.timestamps
     end
