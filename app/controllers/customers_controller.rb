@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authorize
-  before_action :set_customer, only: [:show, :edit, :update, :destroy, :consent_form]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :consent_form, :check_in]
 
   # GET /customers
   # GET /customers.json
@@ -20,6 +20,14 @@ class CustomersController < ApplicationController
   def new
     @customer = Customer.new
     @customer.slug = @customer.generate_surefit_slug
+  end
+
+  def check_in
+    @customer.attendances.create(
+      date_attended: Date.today,
+      user_id: current_user.id,
+    )
+    redirect_to :dashboard
   end
 
   def consent_form

@@ -12,16 +12,6 @@ class AttendancesController < ApplicationController
   def edit
   end
 
-  def take
-    # TODO add an index for date_attended and customer_id
-    attendance = Attendance.create(
-      date_attended: Date.today,
-      user_id: current_user.id,
-      customer_id: params[:customer_id]
-    )
-    redirect_to :dashboard
-  end
-
   # POST /attendances
   # POST /attendances.json
   def create

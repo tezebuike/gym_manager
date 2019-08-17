@@ -3,11 +3,7 @@ Rails.application.routes.draw do
   resources :measurements
   get '/dashboard', to: 'home#index'
 
-  resources :attendances, except: [:new, :show] do
-    collection do
-      get :take
-    end
-  end
+  resources :attendances, except: [:new, :show]
   resources :subscriptions, except: [:show] do
     collection do
       get :expire
@@ -21,6 +17,7 @@ Rails.application.routes.draw do
   resources :customers do
     member do
       get :consent_form
+      post :check_in
     end
   end
   resources :plans, except: [:show]
