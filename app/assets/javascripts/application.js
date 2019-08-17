@@ -19,6 +19,7 @@
 //= require jquery-easing/jquery.easing.min.js
 //= require datatables/jquery.dataTables.min.js
 //= require datatables/dataTables.bootstrap4.min.js
+//= require chosen
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
@@ -43,4 +44,6 @@ $(document).on('turbolinks:load', function() {
       $('.sidebar .collapse').collapse('hide');
     };
   });
+
+  $('.chosen-select').chosen()
 });
