@@ -28,7 +28,8 @@ $(document).on('turbolinks:load', function() {
     })
   }, 2000);
 
-  $('[id^="dataTable"]').dataTable( {
+  $('table.table-bordered').dataTable( {
+    "scrollX": true,
     "order": []
   });
 
