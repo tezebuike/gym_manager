@@ -32,12 +32,12 @@ class SubscriptionsController < ApplicationController
 
   def pause
     @subscription.update(paused_date: Date.today, status: :paused)
-    redirect_to @subscription.customer
+    redirect_back(fallback_location: @subscription.customer)
   end
 
   def restart
     @subscription.update(paused_date: nil, status: :active)
-    redirect_to @subscription.customer
+    redirect_back(fallback_location: @subscription.customer)
   end
 
   # POST /subscriptions
@@ -47,7 +47,7 @@ class SubscriptionsController < ApplicationController
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
+        format.html { redirect_back(fallback_location: @subscription.customer, notice: 'Subscription was successfully created.') }
         format.json { render :show, status: :created, location: @subscription }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@ class SubscriptionsController < ApplicationController
   def update
     respond_to do |format|
       if @subscription.update(subscription_params)
-        format.html { redirect_to @customer, notice: 'Subscription was successfully updated.' }
+        format.html { redirect_back(fallback_location: @subscription.customer, notice: 'Subscription was successfully updated.') }
         format.json { render :show, status: :ok, location: @subscription }
       else
         format.html { render :edit }
