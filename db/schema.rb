@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20190817140853) do
     t.string "company_name"
     t.string "company_address"
     t.string "nationality"
-    t.string "goals"
+    t.text "goals", default: [], array: true
     t.index ["slug"], name: "index_customers_on_slug"
   end
 
