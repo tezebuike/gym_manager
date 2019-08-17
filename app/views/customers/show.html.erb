@@ -123,6 +123,7 @@
             <th>Status</th>
             <th>Notes</th>
             <th>Prepared By</th>
+            <th>No of Changes</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -141,6 +142,7 @@
               <td><%= subscription.status %></td>
               <td><%= subscription.notes %></td>
               <td><%= subscription.prepared_by %></td>
+              <td><%= subscription.audits.count %></td>
               <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
             </tr>
           <% end %>
