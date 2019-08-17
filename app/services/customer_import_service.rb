@@ -10,14 +10,13 @@ class CustomerImportService
   end
 
   def self.import_customer(row)
-    puts "\n\n got here"
-    p row
     customer_data = {}
     customer_data[:slug] = row["SLUG"].split('.').join('').upcase
     customer_data[:date_of_birth] = normalize_birthday(row["BIRTHDAY"]) if row["BIRTHDAY"].present?
     customer_data[:email] = row["EMAIL"].downcase if row["EMAIL"].present?
     customer_data[:address] = row["ADDRESS"].titleize if row["ADDRESS"].present?
     customer_data[:phone_number] = row["PHONE NO"] if row["PHONE NO"].present?
+    customer_data[:status] = 'active'
 
     customer_data.merge!(normalize_full_name(row["NAME"]))
     customer = Customer.new(customer_data)
@@ -25,8 +24,8 @@ class CustomerImportService
       puts "Created customer with SF ID - #{customer_data[:slug]}"
       cust = customer
     else
-      cust = customer
       puts "Failed to create customer - #{customer_data[:slug]}. Error: #{customer.errors.full_messages}"
+      p row
     end
   end
 
