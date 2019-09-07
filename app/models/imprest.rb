@@ -1,0 +1,2 @@
+class Imprest < ApplicationRecord
+end

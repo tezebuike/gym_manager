@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :imprests
   resources :measurements, except: [:show]
   get '/dashboard', to: 'home#index'
 
