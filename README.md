@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A system for managing Gym activities.
 
-Things you may want to cover:
+### What can I do with it?
+* Role based user management
+* Create and manage subscription plans
+* Create customers and upload their photos
+* Manage their subscriptions
+* View audit trail
 
-* Ruby version
+### Concepts used
+- Authentication and Authorization
+- Image upload
+- Audit management
+- File parsing
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### TODOs:
+- Advanced Reporting
+- Customer module
+- Trainer module
