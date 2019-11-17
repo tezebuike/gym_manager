@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+  <div class="col-xl-10 col-lg-12 col-md-9">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <div class="p-mobile">
+              <%= form_with(model: measurement, local: true, class:"user") do |form| %>
+                <%= form.text_field :customer_id, type: 'hidden' %>
+                <% if measurement.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(measurement.errors.count, "error") %> prohibited this measurement from being saved:</h2>
+
+                    <ul>
+                    <% measurement.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :body_weight, "Body Weight (kg)", class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :body_weight, id: :measurement_body_weight, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :hips, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :hips, id: :measurement_hips, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :arms, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :arms, id: :measurement_arms, class:"mb-4 form-control form-control-user" %>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <%= form.label :height, "Height (m)", class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :height, id: :measurement_height, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :upper_abs, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :upper_abs, id: :measurement_upper_abs, class:"form-control form-control-user" %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= form.label :lower_abs, class:"mb-0 ml-3 text-gray-800" %>
+                    <%= form.number_field :lower_abs, id: :measurement_lower_abs, class:"mb-4 form-control form-control-user" %>
+                  </div>
+                </div>
+                <hr>
+                <div>
+                  <%= form.submit class:"btn btn-primary btn-user btn-block" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

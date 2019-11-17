@@ -24,7 +24,7 @@
                 <div class="form-group row">
                   <div class="col-sm-4 mb-3 mb-sm-0">
                     <%= form.label :plan_id, "Select a Membership Plan", class:"mb-2 ml-3 text-gray-800" %>
-                    <%= form.select :plan_id, options_for_select(Plan.all.map(&:membership_type), subscription.plan.try(&:membership_type)), {}, class: 'form-control form-control-lg form-control-user' %>
+                    <%= form.select :plan_id, options_for_select(Plan.all.map{|plan| [plan.membership_type, plan.id]}, subscription.plan.try(&:id)), {include_blank: true}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
 
                   <div class="col-sm-4">
@@ -34,7 +34,7 @@
 
                   <div class="col-sm-4">
                     <%= form.label :mode_of_payment, class:"mb-2 ml-3 text-gray-800" %>
-                    <%= form.select :mode_of_payment, options_for_select(Subscription::MODE_OF_PAYMENTS, subscription.mode_of_payment), {}, class: 'form-control form-control-lg form-control-user' %>
+                    <%= form.select :mode_of_payment, options_for_select(Subscription::MODE_OF_PAYMENTS, subscription.mode_of_payment), {include_blank: true}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
                 </div>
 
@@ -68,7 +68,7 @@
 
                   <div class="col-sm-4">
                     <%= form.label :status, class:"mb-2 ml-3 text-gray-800" %>
-                    <%= form.select :status, options_for_select(Subscription.statuses.keys, subscription.status), {}, class: 'form-control form-control-lg form-control-user' %>
+                    <%= form.select :status, options_for_select(Subscription.statuses.keys, subscription.status), {include_blank: true}, class: 'form-control form-control-lg form-control-user' %>
                   </div>
                 </div>
 

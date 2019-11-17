@@ -1,0 +1,43 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Measurements</h1>
+</div>
+
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover nowrap" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Body Weight</th>
+            <th>Height</th>
+            <th>Arms</th>
+            <th>Upper Abs</th>
+            <th>Lower Abs</th>
+            <th>Hips</th>
+            <th>BMI</th>
+            <th>Created On</th>
+            <th>Updared On</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @measurements.each do |meas| %>
+            <tr>
+              <td><%= meas.body_weight %></td>
+              <td><%= meas.height %></td>
+              <td><%= meas.arms %></td>
+              <td><%= meas.upper_abs %></td>
+              <td><%= meas.lower_abs %></td>
+              <td><%= meas.hips %></td>
+              <td><%= meas.bmi %></td>
+              <td><%= meas.created_at %></td>
+              <td><%= meas.updated_at %></td>
+              <td><%= link_to 'Edit', edit_measurement_path(meas), class: "btn btn-primary d-sm-inline-block btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

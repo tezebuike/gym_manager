@@ -95,7 +95,7 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered table-hover nowrap" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Surefit ID</th>
@@ -124,7 +124,7 @@
               <td>
                 <%= link_to 'Edit', edit_customer_path(cs.customer), class: "btn btn-primary d-sm-inline-block btn-sm" %>
                 <% if cs.customer.last_date_attended != Date.today  %>
-                  <%= link_to 'Check-In', take_attendances_path(customer_id: cs.customer.id), class: "btn btn-warning d-sm-inline-block btn-sm" %>
+                  <%= link_to 'Check-In', check_in_customer_path(cs.customer), method: :post, class: "btn btn-warning d-sm-inline-block btn-sm" %>
                 <% end %>
               </td>
             </tr>

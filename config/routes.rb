@@ -1,21 +1,25 @@
 Rails.application.routes.draw do
   
+  resources :inventories
+  resources :imprests
+  resources :measurements, except: [:show]
   get '/dashboard', to: 'home#index'
 
-  resources :attendances, except: [:new, :show] do
-    collection do
-      get :take
-    end
-  end
+  resources :attendances, except: [:new, :show]
   resources :subscriptions, except: [:show] do
     collection do
       get :expire
+    end
+    member do
+      post :pause
+      post :restart
     end
   end
 
   resources :customers do
     member do
       get :consent_form
+      post :check_in
     end
   end
   resources :plans, except: [:show]

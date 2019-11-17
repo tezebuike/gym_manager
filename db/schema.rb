@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190806224206) do
+ActiveRecord::Schema.define(version: 20190817140853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,22 @@ ActiveRecord::Schema.define(version: 20190806224206) do
     t.string "company_name"
     t.string "company_address"
     t.string "nationality"
-    t.string "goals"
+    t.text "goals", default: [], array: true
     t.index ["slug"], name: "index_customers_on_slug"
+  end
+
+  create_table "measurements", force: :cascade do |t|
+    t.float "body_weight"
+    t.float "hips"
+    t.float "upper_abs"
+    t.float "lower_abs"
+    t.float "arms"
+    t.float "height"
+    t.float "bmi"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_measurements_on_customer_id"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -95,6 +109,7 @@ ActiveRecord::Schema.define(version: 20190806224206) do
     t.datetime "updated_at", null: false
     t.string "notes"
     t.string "prepared_by"
+    t.date "paused_date"
     t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
     t.index ["plan_id"], name: "index_subscriptions_on_plan_id"
   end

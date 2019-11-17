@@ -86,7 +86,7 @@
                 <div class="form-group row">
                   <div class="col-sm-4 mb-3 mb-sm-0">
                     <%= form.label :goals, class:"mb-2 ml-3 text-gray-800" %>
-                    <%= form.select :goals, options_for_select(Customer::FITNESS_GOALS, customer.goals), {}, class: 'form-control form-control-lg form-control-user' %>
+                    <%= form.select :goals, options_for_select(Customer::FITNESS_GOALS, customer.goals), {}, multiple: true, class: 'chosen-select form-control form-control-lg form-control-user' %>
                   </div>
 
                   <div class="col-sm-4">

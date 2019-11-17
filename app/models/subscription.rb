@@ -26,6 +26,7 @@ class Subscription < ApplicationRecord
 
   enum status: {
     active: "active",
+    paused: "paused",
     completed: "completed",
     deactivated: "deactivated"
   }

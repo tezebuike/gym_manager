@@ -1,0 +1,37 @@
+<%= form_with(model: imprest, local: true) do |form| %>
+  <% if imprest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(imprest.errors.count, "error") %> prohibited this imprest from being saved:</h2>
+
+      <ul>
+      <% imprest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :imprest_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item %>
+    <%= form.text_field :item, id: :imprest_item %>
+  </div>
+
+  <div class="field">
+    <%= form.label :debit %>
+    <%= form.text_field :debit, id: :imprest_debit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :credit %>
+    <%= form.text_field :credit, id: :imprest_credit %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

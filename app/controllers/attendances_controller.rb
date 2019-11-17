@@ -12,16 +12,6 @@ class AttendancesController < ApplicationController
   def edit
   end
 
-  def take
-    # TODO add an index for date_attended and customer_id
-    attendance = Attendance.create(
-      date_attended: Date.today,
-      user_id: current_user.id,
-      customer_id: params[:customer_id]
-    )
-    redirect_to :dashboard
-  end
-
   # POST /attendances
   # POST /attendances.json
   def create
@@ -43,7 +33,7 @@ class AttendancesController < ApplicationController
   def update
     respond_to do |format|
       if @attendance.update(attendance_params)
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully updated.' }
+        format.html { redirect_back(fallback_location: @attendance, notice: 'Attendance was successfully updated.') }
         format.json { render :show, status: :ok, location: @attendance }
       else
         format.html { render :edit }

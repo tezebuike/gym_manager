@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authorize
-  before_action :set_customer, only: [:show, :edit, :update, :destroy, :consent_form]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :consent_form, :check_in]
 
   # GET /customers
   # GET /customers.json
@@ -14,12 +14,21 @@ class CustomersController < ApplicationController
     @subscriptions = @customer.subscriptions
     @attendances = @customer.attendances
     @audits = @customer.own_and_associated_audits
+    @measurements = @customer.measurements
   end
 
   # GET /customers/new
   def new
     @customer = Customer.new
     @customer.slug = @customer.generate_surefit_slug
+  end
+
+  def check_in
+    @customer.attendances.create(
+      date_attended: Date.today,
+      user_id: current_user.id,
+    )
+    redirect_to :dashboard
   end
 
   def consent_form
@@ -61,7 +70,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        format.html { redirect_back(fallback_location: @customer, notice: 'Customer was successfully updated.') }
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }
@@ -89,6 +98,6 @@ class CustomersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
       params.require(:customer).permit(:slug, :title, :first_name, :middle_name, :last_name, :email, :phone_number, :address, :gender, :date_of_birth, :date_joined, :status, :avatar, :remove_avatar, :audit_comment,
-        :company_name, :company_address, :nationality, :goals)
+        :company_name, :company_address, :nationality, goals: [])
     end
 end
